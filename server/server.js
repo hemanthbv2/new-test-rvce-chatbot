@@ -175,20 +175,20 @@ app.post('/api/logs/mock', async (req, res) => {
         const ts = (offset) => new Date(now - offset).toISOString();
         
         const mock = [
-            { s: sid, q: "Hi", i: "greet", d: ts(120000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "[click] Button: 💼 Placements", i: "click:Button: 💼 Placements", d: ts(108000), t: 'interaction', m: { action: 'placements', element: 'act-btn' }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "CSE placements", i: "placements", d: ts(100000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "[hover] View Placement Stats", i: "hover:View Placement Stats", d: ts(95000), t: 'interaction', m: { duration: '500ms+' }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "[copy] ₹67 LPA Highest Package", i: "copy:₹67 LPA Highest Package", d: ts(75000), t: 'interaction', m: { length: 24 }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "[click] Button: 🎓 Admissions", i: "click:Button: 🎓 Admissions", d: ts(65000), t: 'interaction', m: { action: 'admissions', element: 'act-btn' }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "how to apply?", i: "admissions", d: ts(60000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "hostel fees", i: "hostels", d: ts(45000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "tell me about cse department", i: "dept_cse", d: ts(40000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "nirf ranking?", i: "ranking", d: ts(30000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "what is the weather in bangalore?", i: "unmatched", d: ts(20000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "shut up", i: "moderated_abusive", d: ts(8000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "[dwell] Chat open for 95s", i: "dwell:Chat open for 95s", d: ts(5000), t: 'interaction', m: { seconds: 95 }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
-            { s: sid, q: "[session] Page Unload", i: "session:Page Unload", d: ts(1000), t: 'interaction', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome' },
+            { s: sid, q: "Hi", i: "greet", d: ts(120000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "[click] Button: 💼 Placements", i: "click:Button: 💼 Placements", d: ts(108000), t: 'interaction', m: { action: 'placements', element: 'act-btn' }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "CSE placements", i: "placements", d: ts(100000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "[hover] View Placement Stats", i: "hover:View Placement Stats", d: ts(95000), t: 'interaction', m: { duration: '500ms+' }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "[copy] ₹67 LPA Highest Package", i: "copy:₹67 LPA Highest Package", d: ts(75000), t: 'interaction', m: { length: 24 }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "[click] Button: 🎓 Admissions", i: "click:Button: 🎓 Admissions", d: ts(65000), t: 'interaction', m: { action: 'admissions', element: 'act-btn' }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "how to apply?", i: "admissions", d: ts(60000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "hostel fees", i: "hostels", d: ts(45000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "tell me about cse department", i: "dept_cse", d: ts(40000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "nirf ranking?", i: "ranking", d: ts(30000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "what is the weather in bangalore?", i: "unmatched", d: ts(20000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "shut up", i: "moderated_abusive", d: ts(8000), t: 'message', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "[dwell] Chat open for 95s", i: "dwell:Chat open for 95s", d: ts(5000), t: 'interaction', m: { seconds: 95 }, device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
+            { s: sid, q: "[session] Page Unload", i: "session:Page Unload", d: ts(1000), t: 'interaction', device: 'MockDevice', deviceType: 'desktop', browserName: 'Chrome', os: 'Windows', city: 'Bangalore', country: 'India' },
         ];
 
         const withTimestamps = mock.map(l => ({ ...l, createdAt: new Date(l.d) }));

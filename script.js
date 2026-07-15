@@ -3387,6 +3387,31 @@ function getSID() {
     return currentSessionId;
 }
 
+let userLocation = { city: 'Unknown', country: 'Unknown' };
+let locationFetched = false;
+
+async function fetchUserLocation() {
+    if (locationFetched) return;
+    try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        if (data.city) userLocation.city = data.city;
+        if (data.country_name) userLocation.country = data.country_name;
+        locationFetched = true;
+    } catch(e) { console.warn("Location fetch failed"); }
+}
+fetchUserLocation();
+
+function getOS() {
+    const ua = navigator.userAgent;
+    if (/Windows/i.test(ua)) return "Windows";
+    if (/Mac/i.test(ua)) return "macOS";
+    if (/Linux/i.test(ua)) return "Linux";
+    if (/Android/i.test(ua)) return "Android";
+    if (/iPhone|iPad|iPod/i.test(ua)) return "iOS";
+    return "Unknown";
+}
+
 const telemetryQueue = [];
 function processTelemetryQueue() {
     if (typeof rvceChatbotAjax === 'undefined' || !rvceChatbotAjax || !rvceChatbotAjax.ajaxUrl || !navigator.onLine || telemetryQueue.length === 0) return;
@@ -3415,7 +3440,10 @@ function logChatInteraction(query, intent_id, metadata = {}) {
         m: metadata,
         device: navigator.userAgent,
         deviceType: /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(navigator.userAgent) ? 'mobile' : /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent) ? 'tablet' : 'desktop',
-        browserName: getBrowserName()
+        browserName: getBrowserName(),
+        os: getOS(),
+        city: userLocation.city,
+        country: userLocation.country
     };
 
     try {
@@ -3457,7 +3485,10 @@ function logMicroInteraction(type, label, metadata = {}) {
         m: metadata,
         device: navigator.userAgent,
         deviceType: /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(navigator.userAgent) ? 'mobile' : /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent) ? 'tablet' : 'desktop',
-        browserName: getBrowserName()
+        browserName: getBrowserName(),
+        os: getOS(),
+        city: userLocation.city,
+        country: userLocation.country
     };
 
     try {

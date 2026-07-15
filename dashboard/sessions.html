@@ -215,9 +215,20 @@ el.innerHTML=sortedDays.map(dayKey => {
         
         timeline += `<div class="t-step" style="border-left: 2px solid var(--danger); margin-top:8px;"><div class="ic" style="background:rgba(239,68,68,0.2);color:#ef4444;">🔴</div><div class="tx" style="color:#ef4444;">User Dropped Off <span style="font-size:10px; opacity:0.7;">(Last intent: ${dropIntent})</span></div><div class="tm">${new Date(lastEvt.d).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'})}</div></div>`;
         
+        const os = evts[0].os || 'Unknown OS';
+        const city = evts[0].city || 'Unknown';
+        const country = evts[0].country || 'Unknown';
+        const browser = evts[0].browserName || 'Unknown Browser';
+        
+        const locStr = (city !== 'Unknown' && country !== 'Unknown') ? `📍 ${city}, ${country}` : '📍 Unknown Location';
+        const devStr = `💻 ${os} (${browser})`;
+
         return `<div class="s-card" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
         <div class="s-head">
-            <div class="s-id">🔗 Session ${sid.split('_')[1]||sid}</div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+                <div class="s-id">🔗 Session ${sid.split('_')[1]||sid}</div>
+                <div style="font-size:11px; color:var(--dim);">${locStr} &nbsp;|&nbsp; ${devStr}</div>
+            </div>
             <div style="display:flex; align-items:center; gap:12px;">
                 <div class="s-time">${timeStr} · ${evts.length} events</div>
                 <button style="padding:4px 8px; font-size:11px; background:var(--card); color:var(--text); border:1px solid var(--border); border-radius:6px; cursor:pointer;" onclick="downloadSessionPDF(event, this)">📄 Export PDF</button>

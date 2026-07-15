@@ -15,6 +15,9 @@ const chatLogSchema = new mongoose.Schema({
     device: { type: String, default: '' },     // User-Agent string
     deviceType: { type: String, default: 'unknown' }, // 'desktop' | 'mobile' | 'tablet'
     browserName: { type: String, default: '' }, // e.g., 'Chrome', 'Firefox'
+    os: { type: String, default: 'unknown' },  // e.g., 'Windows', 'iOS'
+    city: { type: String, default: 'Unknown' }, // from IP geolocation
+    country: { type: String, default: 'Unknown' }, // from IP geolocation
     
     // Server timestamp for reliable ordering
     createdAt: { type: Date, default: Date.now, index: true }
