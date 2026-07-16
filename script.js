@@ -1604,7 +1604,7 @@ const allBranches = [...KB.departments.ug, ...KB.departments.pg];
 
 allBranches.forEach(branch => {
     const code = branch.c;
-    const name = sanitize(branch.n.replace(/\(.*\)/, '')).toLowerCase();
+    const name = sanitize(branch.n.replace(/\s*\([^)]*\)$/, '').trim()).toLowerCase();
     const shortCode = branch.c.toLowerCase();
     
     const kws = [
@@ -1627,7 +1627,7 @@ QA.push(...branchHodIntents);
 const branchPlacementIntents = [];
 allBranches.forEach(branch => {
     const code = branch.c;
-    const name = sanitize(branch.n.replace(/\(.*\)/, '')).toLowerCase();
+    const name = sanitize(branch.n.replace(/\s*\([^)]*\)$/, '').trim()).toLowerCase();
     const shortCode = branch.c.toLowerCase();
     
     const kws = [
@@ -1651,7 +1651,7 @@ QA.push(...branchPlacementIntents);
 const branchIntakeIntents = [];
 allBranches.forEach(branch => {
     const code = branch.c;
-    const name = sanitize(branch.n.replace(/\(.*\)/, '')).toLowerCase();
+    const name = sanitize(branch.n.replace(/\s*\([^)]*\)$/, '').trim()).toLowerCase();
     const shortCode = branch.c.toLowerCase();
     
     const kws = [
