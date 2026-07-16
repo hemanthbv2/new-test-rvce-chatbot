@@ -1149,12 +1149,21 @@ const KB = {
             ]
         },
         'ei': {
-            "B.E. - Electronics & Instrumentation": [
-                "Instrumentation Engineer", "Control Systems Engineer", "Embedded Systems Engineer",
-                "Electronics Design Engineer", "Industrial IoT Engineer", "Process Automation Engineer",
-                "Technical Consultant", "R&D Engineer"
+        name: "Electronics and Instrumentation Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electronics and Instrumentation Engineering (2025-26)",
+                companies: 27, offers: 53, students: 46,
+                avg: "11.77 LPA", max: "37.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 31, offers: 55, students: 51, avg: "9.28 LPA", max: "39.00 LPA" },
+                { name: "2023-24", companies: 30, offers: 46, students: 43, avg: "9.29 LPA", max: "18.35 LPA" },
+                { name: "2022-23", companies: 41, offers: 56, students: 45, avg: "9.59 LPA", max: "19.19 LPA" },
+                { name: "2021-22", companies: 40, offers: 74, students: 54, avg: "11.11 LPA", max: "31.76 LPA" }
             ]
-        },
+        }
+    },
         'et': {
             "B.E. - Electronics & Telecommunication": [
                 "R&D Engineer", "Hardware Engineer", "Embedded Engineer",
