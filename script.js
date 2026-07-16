@@ -3551,6 +3551,16 @@ function getResponse(id) {
             
             if (d) {
                 if (rawStats) {
+                    if (!isUG && !isPG && (rawStats.ug || rawStats.pg)) {
+                        r.text += T(`The **${d.n}** department has both UG and PG programs. Which placement statistics would you like to view? 📊`, 
+                                    `Select the program level for ${d.n} placements:`);
+                        r.buttons = [];
+                        if (rawStats.ug) r.buttons.push({l: 'UG Programs (B.E.) 🎓', a: `plcmt_${c}_ug`, i: '🎓'});
+                        if (rawStats.pg) r.buttons.push({l: 'PG Programs (M.Tech/MCA) 🎓', a: `plcmt_${c}_pg`, i: '🎓'});
+                        r.buttons.push({l: 'Other Departments', a: 'dept_placements_list', i: '📋'});
+                        return r;
+                    }
+
                     let stats = rawStats;
                     if (isUG && stats.ug) stats = stats.ug;
                     else if (isPG && stats.pg) stats = stats.pg;
