@@ -2280,42 +2280,106 @@ function getResponse(id) {
         r.text += "\n• Currently, we have the ongoing 2026 placement data and the finalized 2025 data available.";
         r.buttons = [{l:'2026 Placements',a:'placements',i:'💼'}, {l:'Department-wise Stats',a:'dept_placements_list',i:'📊'}]; break;
     case 'dept_placements_list':
-        r.text += T("Explore our department-wise placement statistics! 📊 Choose a category:", "Department-wise Placement Statistics - Select a category:");
+        r.text += T("Explore our department-wise placement statistics! 📊 Select Program Level:", "Department-wise Placement Statistics - Select Level:");
         r.buttons = [
-            {l:'Computing & IT 💻',a:'plcmt_group_comp',i:'💻'},
-            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec',i:'🔌'},
-            {l:'Core Engineering ⚙️',a:'plcmt_group_core',i:'⚙️'},
-            {l:'Back to Placements',a:'_back',i:'🔙'}
+            {l:'UG Programs (B.E.) 🎓',a:'plcmt_ug_categories',i:'🎓'},
+            {l:'PG Programs (M.Tech/MCA) 🎓',a:'plcmt_pg_categories',i:'🎓'},
+            {l:'Back to Placements',a:'placements',i:'🔙'}
         ]; break;
-    case 'plcmt_group_comp':
-        r.text += T("Computing & IT Placement Stats:", "Computing & IT Placement Statistics:");
+    case 'plcmt_ug_categories':
+        r.text += T("UG Placement Statistics! 📊 Choose a category:", "UG Placement Statistics - Select a category:");
         r.buttons = [
-            {l:'CSE 💻',a:'plcmt_cs',i:'💻'},
-            {l:'ISE 💻',a:'plcmt_is',i:'💻'},
-            {l:'AIML 🤖',a:'plcmt_aiml',i:'🤖'},
-            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+            {l:'Computing & IT 💻',a:'plcmt_group_comp_ug',i:'💻'},
+            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec_ug',i:'🔌'},
+            {l:'Core Engineering ⚙️',a:'plcmt_group_core_ug',i:'⚙️'},
+            {l:'Back',a:'dept_placements_list',i:'🔙'}
         ];
         r.noMenu = true; break;
-    case 'plcmt_group_elec':
-        r.text += T("Electrical & Communication Placement Stats:", "Electrical & Communication Placement Statistics:");
+    case 'plcmt_pg_categories':
+        r.text += T("PG Placement Statistics! 📊 Choose a category:", "PG Placement Statistics - Select a category:");
         r.buttons = [
-            {l:'ECE 📡',a:'plcmt_ec',i:'📡'},
-            {l:'EEE 🔌',a:'plcmt_ee',i:'🔌'},
-            {l:'Telecom 📶',a:'plcmt_et',i:'📶'},
-            {l:'Instrumentation 🎛️',a:'plcmt_ei',i:'🎛️'},
-            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+            {l:'Computing & IT 💻',a:'plcmt_group_comp_pg',i:'💻'},
+            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec_pg',i:'🔌'},
+            {l:'Core Engineering ⚙️',a:'plcmt_group_core_pg',i:'⚙️'},
+            {l:'MCA 💻',a:'plcmt_mca_pg',i:'💻'},
+            {l:'Back',a:'dept_placements_list',i:'🔙'}
         ];
         r.noMenu = true; break;
-    case 'plcmt_group_core':
-        r.text += T("Core Engineering Placement Stats:", "Core Engineering Placement Statistics:");
+
+    case 'plcmt_cs_ug':
+        r.text += T("Select a B.E. CSE Specialization:", "B.E. CSE Placements - Select Specialization:");
         r.buttons = [
-            {l:'Mechanical ⚙️',a:'plcmt_me',i:'⚙️'},
-            {l:'Aerospace ✈️',a:'plcmt_ae',i:'✈️'},
-            {l:'Civil 🏗️',a:'plcmt_cv',i:'🏗️'},
-            {l:'Chemical 🧪',a:'plcmt_ch',i:'🧪'},
-            {l:'BioTech 🧬',a:'plcmt_bt',i:'🧬'},
-            {l:'Industrial (IEM) 🏭',a:'plcmt_im',i:'🏭'},
-            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+            {l:'CSE Core',a:'cs_spec_cs_core',i:'💻'},
+            {l:'Data Science',a:'cs_spec_cs_ds',i:'📊'},
+            {l:'Cyber Security',a:'cs_spec_cs_cy',i:'🔒'},
+            {l:'AIML',a:'cs_spec_cs_aiml',i:'🤖'},
+            {l:'Back',a:'plcmt_group_comp_ug',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_cs_pg':
+        r.text += T("Select an M.Tech CSE Specialization:", "M.Tech CSE Placements - Select Specialization:");
+        r.buttons = [
+            {l:'M.Tech CSE',a:'cs_spec_cs_mtech',i:'💻'},
+            {l:'M.Tech Computer Network Engg',a:'cs_spec_cs_cne',i:'🌐'},
+            {l:'Back',a:'plcmt_group_comp_pg',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+
+    case 'plcmt_group_comp_ug':
+        r.text += T("Computing & IT (UG) Placement Stats:", "Computing & IT (UG) Placement Statistics:");
+        r.buttons = [
+            {l:'CSE 💻',a:'plcmt_cs_ug',i:'💻'},
+            {l:'ISE 💻',a:'plcmt_is_ug',i:'💻'},
+            {l:'AIML 🤖',a:'plcmt_aiml_ug',i:'🤖'},
+            {l:'Back',a:'plcmt_ug_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_elec_ug':
+        r.text += T("Electrical & Communication (UG) Placement Stats:", "Electrical & Communication (UG) Placement Statistics:");
+        r.buttons = [
+            {l:'ECE 📡',a:'plcmt_ec_ug',i:'📡'},
+            {l:'EEE 🔌',a:'plcmt_ee_ug',i:'🔌'},
+            {l:'Telecom 📶',a:'plcmt_et_ug',i:'📶'},
+            {l:'Instrumentation 🎛️',a:'plcmt_ei_ug',i:'🎛️'},
+            {l:'Back',a:'plcmt_ug_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_core_ug':
+        r.text += T("Core Engineering (UG) Placement Stats:", "Core Engineering (UG) Placement Statistics:");
+        r.buttons = [
+            {l:'Mechanical ⚙️',a:'plcmt_me_ug',i:'⚙️'},
+            {l:'Aerospace ✈️',a:'plcmt_ae_ug',i:'✈️'},
+            {l:'Civil 🏗️',a:'plcmt_cv_ug',i:'🏗️'},
+            {l:'Chemical 🧪',a:'plcmt_ch_ug',i:'🧪'},
+            {l:'BioTech 🧬',a:'plcmt_bt_ug',i:'🧬'},
+            {l:'Industrial (IEM) 🏭',a:'plcmt_im_ug',i:'🏭'},
+            {l:'Back',a:'plcmt_ug_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+
+    case 'plcmt_group_comp_pg':
+        r.text += T("Computing & IT (PG) Placement Stats:", "Computing & IT (PG) Placement Statistics:");
+        r.buttons = [
+            {l:'CSE 💻',a:'plcmt_cs_pg',i:'💻'},
+            {l:'ISE 💻',a:'plcmt_is_pg',i:'💻'},
+            {l:'Back',a:'plcmt_pg_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_elec_pg':
+        r.text += T("Electrical & Communication (PG) Placement Stats:", "Electrical & Communication (PG) Placement Statistics:");
+        r.buttons = [
+            {l:'ECE 📡',a:'plcmt_ec_pg',i:'📡'},
+            {l:'EEE 🔌',a:'plcmt_ee_pg',i:'🔌'},
+            {l:'Back',a:'plcmt_pg_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_core_pg':
+        r.text += T("Core Engineering (PG) Placement Stats:", "Core Engineering (PG) Placement Statistics:");
+        r.buttons = [
+            {l:'Mechanical ⚙️',a:'plcmt_me_pg',i:'⚙️'},
+            {l:'Civil 🏗️',a:'plcmt_cv_pg',i:'🏗️'},
+            {l:'BioTech 🧬',a:'plcmt_bt_pg',i:'🧬'},
+            {l:'Back',a:'plcmt_pg_categories',i:'🔙'}
         ];
         r.noMenu = true; break;
     case 'placements':
@@ -2759,6 +2823,47 @@ function getResponse(id) {
             const d = KB.departments.ug.find(x=>x.c===c) || KB.departments.pg.find(x=>x.c===c);
             if (d) return renderDepartment(d);
         }
+
+        if (id && id.startsWith('cs_spec_')) {
+            const specId = id.replace('cs_spec_', '');
+            const specData = KB.placement_stats[specId];
+            if (specData) {
+                r.text += T(`Here are the ongoing placement statistics for **${specData.name}**: 📊\n\n`, `Ongoing Placement Statistics for ${specData.name}:\n\n`);
+                const prog = specData.ongoing;
+                r.text += `**${prog.name}**\n`;
+                r.text += `  **Number of companies visited:** ${prog.companies}\n`;
+                r.text += `  **Number of offers made:** ${prog.offers}\n`;
+                r.text += `  **Number of students selected:** ${prog.students}\n`;
+                r.text += `  **Average Salary:** ${prog.avg}\n`;
+                r.text += `  **Maximum salary:** ${prog.max}\n\n`;
+                
+                r.buttons = [];
+                if (specData.full && specData.full.length > 0) {
+                    r.buttons.push({l: 'View Full Year-wise Stats 📊', a: `cs_full_${specId}`, i: '📅'});
+                }
+                r.buttons.push({l: 'Back to CSE Branches', a: specId.includes('mtech') || specId.includes('cne') ? 'plcmt_cs_pg' : 'plcmt_cs_ug', i: '🔙'});
+                return r;
+            }
+        }
+        
+        if (id && id.startsWith('cs_full_')) {
+            const specId = id.replace('cs_full_', '');
+            const specData = KB.placement_stats[specId];
+            if (specData && specData.full) {
+                r.text += T(`Here are the full year-wise placement statistics for **${specData.name}**: 📊\n\n`, `Full Year-wise Placement Statistics for ${specData.name}:\n\n`);
+                specData.full.forEach(prog => {
+                    r.text += `**${prog.name}**\n`;
+                    r.text += `  **Number of companies visited:** ${prog.companies}\n`;
+                    r.text += `  **Number of offers made:** ${prog.offers}\n`;
+                    r.text += `  **Number of students selected:** ${prog.students}\n`;
+                    r.text += `  **Average Salary:** ${prog.avg}\n`;
+                    r.text += `  **Maximum salary:** ${prog.max}\n\n`;
+                });
+                r.buttons = [{l: 'Back', a: `cs_spec_${specId}`, i: '🔙'}];
+                return r;
+            }
+        }
+
         // Handle Department Placement requests
         if (id && id.startsWith('plcmt_')) {
             const c = id.replace('plcmt_','');

@@ -1790,18 +1790,50 @@ function findFacultyMatch(input) {
 
 // Department-wise detailed placement statistics (Latest fetched from RVCE Portal)
 KB.placement_stats = {
-    'cs': { 
-        programs: [
-            { name: "B.E. CSE (2024-25)", companies: "91", offers: "190", students: "171", avg: "16.92 LPA", max: "67 LPA" },
+    
+    'cs_core': {
+        name: "B.E. Computer Science And Engineering",
+        ongoing: { name: "B.E. CSE (2025-26 Placements Ongoing)", companies: "85", offers: "217", students: "200", avg: "20.32 LPA", max: "67 LPA" },
+        full: [
+            { name: "B.E. CSE (2024-25*)", companies: "91", offers: "190", students: "171", avg: "16.92 LPA", max: "67 LPA" },
             { name: "B.E. CSE (2023-24)", companies: "81", offers: "177", students: "166", avg: "15.81 LPA", max: "67 LPA" },
             { name: "B.E. CSE (2022-23)", companies: "103", offers: "225", students: "178", avg: "14.66 LPA", max: "48 LPA" },
             { name: "B.E. CSE (2021-22)", companies: "110", offers: "212", students: "179", avg: "14.12 LPA", max: "35.37 LPA" },
-            { name: "B.E. CSE (2020-21)", companies: "95", offers: "202", students: "163", avg: "15.01 LPA", max: "32 LPA" },
+            { name: "B.E. CSE (2020-21)", companies: "95", offers: "202", students: "163", avg: "15.01 LPA", max: "32 LPA" }
+        ]
+    },
+    'cs_ds': {
+        name: "B.E. Computer Science And Engineering (Data Science)",
+        ongoing: { name: "B.E. CSE Data Science (2025-26 Placements Ongoing)", companies: "42", offers: "55", students: "50", avg: "17.6 LPA", max: "40 LPA" }
+    },
+    'cs_cy': {
+        name: "B.E. Computer Science And Engineering (Cyber Security)",
+        ongoing: { name: "B.E. CSE Cyber Security (2025-26 Placements Ongoing)", companies: "45", offers: "51", students: "49", avg: "16.48 LPA", max: "35 LPA" }
+    },
+    'cs_aiml': {
+        name: "B.E. Computer Science And Engineering (AIML)",
+        ongoing: { name: "B.E. CSE AIML (2025-26 Placements Ongoing)", companies: "45", offers: "55", students: "53", avg: "18.17 LPA", max: "35 LPA" }
+    },
+    'cs_mtech': {
+        name: "M.Tech. Computer Science & Engineering",
+        ongoing: { name: "M.Tech. CSE (Placements Ongoing)", companies: "16", offers: "14", students: "14", avg: "19.21 LPA", max: "24 LPA" },
+        full: [
             { name: "M.Tech. CSE (2024-25*)", companies: "16", offers: "14", students: "14", avg: "19.21 LPA", max: "24 LPA" },
             { name: "M.Tech. CSE (2023-24)", companies: "17", offers: "11", students: "11", avg: "15.13 LPA", max: "25 LPA" },
             { name: "M.Tech. CSE (2022-23)", companies: "14", offers: "15", students: "15", avg: "13.01 LPA", max: "26 LPA" },
             { name: "M.Tech. CSE (2021-22)", companies: "15", offers: "16", students: "16", avg: "11.05 LPA", max: "29.05 LPA" },
             { name: "M.Tech. CSE (2020-21)", companies: "Data unavailable", offers: "Data unavailable", students: "Data unavailable", avg: "Data unavailable", max: "Data unavailable" }
+        ]
+    },
+    'cs_cne': {
+        name: "M.Tech. Computer Network Engineering",
+        ongoing: { name: "M.Tech. CNE (Placements Ongoing)", companies: "14", offers: "12", students: "12", avg: "13.02 LPA", max: "24 LPA" },
+        full: [
+            { name: "M.Tech. CNE (2024-25*)", companies: "14", offers: "12", students: "12", avg: "13.02 LPA", max: "24 LPA" },
+            { name: "M.Tech. CNE (2023-24)", companies: "18", offers: "16", students: "16", avg: "5.76 LPA", max: "15 LPA" },
+            { name: "M.Tech. CNE (2022-23)", companies: "13", offers: "14", students: "14", avg: "7.98 LPA", max: "16.24 LPA" },
+            { name: "M.Tech. CNE (2021-22)", companies: "14", offers: "15", students: "15", avg: "8.57 LPA", max: "20 LPA" },
+            { name: "M.Tech. CNE (2020-21)", companies: "Data unavailable", offers: "Data unavailable", students: "Data unavailable", avg: "Data unavailable", max: "Data unavailable" }
         ]
     },
     'is': { 
@@ -2658,50 +2690,116 @@ function getResponse(id) {
         ]; break;
     case 'placements_yearly':
         r.text += T("Here are the year-wise placement statistics for B.E. Computer Science & Engineering (2020-2025): 📊", "Year-wise Placement Statistics (CSE):");
-        KB.placement_stats['cs'].programs.forEach(prog => {
-            r.text += `\n\n**${prog.name}**`;
-            r.text += `\n• Companies Visited: ${prog.companies} | Offers Made: ${prog.offers}`;
-            r.text += `\n• Students Selected: ${prog.students}`;
-            r.text += `\n• Avg Salary: ${prog.avg} | Max Salary: ${prog.max}`;
-        });
+        if (KB.placement_stats['cs_core'] && KB.placement_stats['cs_core'].full) {
+            KB.placement_stats['cs_core'].full.forEach(prog => {
+                r.text += `\n\n**${prog.name}**`;
+                r.text += `\n• Companies Visited: ${prog.companies} | Offers Made: ${prog.offers}`;
+                r.text += `\n• Students Selected: ${prog.students}`;
+                r.text += `\n• Avg Salary: ${prog.avg} | Max Salary: ${prog.max}`;
+            });
+        }
         r.buttons = [{l:'Overall 2026 Placements',a:'placements',i:'💼'}, {l:'Other Departments',a:'dept_placements_list',i:'📊'}]; break;
     case 'dept_placements_list':
-        r.text += T("Explore our department-wise placement statistics! 📊 Choose a category:", "Department-wise Placement Statistics - Select a category:");
+        r.text += T("Explore our department-wise placement statistics! 📊 Select Program Level:", "Department-wise Placement Statistics - Select Level:");
         r.buttons = [
-            {l:'Computing & IT 💻',a:'plcmt_group_comp',i:'💻'},
-            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec',i:'🔌'},
-            {l:'Core Engineering ⚙️',a:'plcmt_group_core',i:'⚙️'},
-            {l:'Back to Placements',a:'_back',i:'🔙'}
+            {l:'UG Programs (B.E.) 🎓',a:'plcmt_ug_categories',i:'🎓'},
+            {l:'PG Programs (M.Tech/MCA) 🎓',a:'plcmt_pg_categories',i:'🎓'},
+            {l:'Back to Placements',a:'placements',i:'🔙'}
         ]; break;
-    case 'plcmt_group_comp':
-        r.text += T("Computing & IT Placement Stats:", "Computing & IT Placement Statistics:");
+    case 'plcmt_ug_categories':
+        r.text += T("UG Placement Statistics! 📊 Choose a category:", "UG Placement Statistics - Select a category:");
         r.buttons = [
-            {l:'CSE 💻',a:'plcmt_cs',i:'💻'},
-            {l:'ISE 💻',a:'plcmt_is',i:'💻'},
-            {l:'AIML 🤖',a:'plcmt_aiml',i:'🤖'},
-            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+            {l:'Computing & IT 💻',a:'plcmt_group_comp_ug',i:'💻'},
+            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec_ug',i:'🔌'},
+            {l:'Core Engineering ⚙️',a:'plcmt_group_core_ug',i:'⚙️'},
+            {l:'Back',a:'dept_placements_list',i:'🔙'}
         ];
         r.noMenu = true; break;
-    case 'plcmt_group_elec':
-        r.text += T("Electrical & Communication Placement Stats:", "Electrical & Communication Placement Statistics:");
+    case 'plcmt_pg_categories':
+        r.text += T("PG Placement Statistics! 📊 Choose a category:", "PG Placement Statistics - Select a category:");
         r.buttons = [
-            {l:'ECE 📡',a:'plcmt_ec',i:'📡'},
-            {l:'EEE 🔌',a:'plcmt_ee',i:'🔌'},
-            {l:'Telecom 📶',a:'plcmt_et',i:'📶'},
-            {l:'Instrumentation 🎛️',a:'plcmt_ei',i:'🎛️'},
-            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+            {l:'Computing & IT 💻',a:'plcmt_group_comp_pg',i:'💻'},
+            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec_pg',i:'🔌'},
+            {l:'Core Engineering ⚙️',a:'plcmt_group_core_pg',i:'⚙️'},
+            {l:'MCA 💻',a:'plcmt_mca_pg',i:'💻'},
+            {l:'Back',a:'dept_placements_list',i:'🔙'}
         ];
         r.noMenu = true; break;
-    case 'plcmt_group_core':
-        r.text += T("Core Engineering Placement Stats:", "Core Engineering Placement Statistics:");
+
+    case 'plcmt_cs_ug':
+        r.text += T("Select a B.E. CSE Specialization:", "B.E. CSE Placements - Select Specialization:");
         r.buttons = [
-            {l:'Mechanical ⚙️',a:'plcmt_me',i:'⚙️'},
-            {l:'Aerospace ✈️',a:'plcmt_ae',i:'✈️'},
-            {l:'Civil 🏗️',a:'plcmt_cv',i:'🏗️'},
-            {l:'Chemical 🧪',a:'plcmt_ch',i:'🧪'},
-            {l:'BioTech 🧬',a:'plcmt_bt',i:'🧬'},
-            {l:'Industrial (IEM) 🏭',a:'plcmt_im',i:'🏭'},
-            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+            {l:'CSE Core',a:'cs_spec_cs_core',i:'💻'},
+            {l:'Data Science',a:'cs_spec_cs_ds',i:'📊'},
+            {l:'Cyber Security',a:'cs_spec_cs_cy',i:'🔒'},
+            {l:'AIML',a:'cs_spec_cs_aiml',i:'🤖'},
+            {l:'Back',a:'plcmt_group_comp_ug',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_cs_pg':
+        r.text += T("Select an M.Tech CSE Specialization:", "M.Tech CSE Placements - Select Specialization:");
+        r.buttons = [
+            {l:'M.Tech CSE',a:'cs_spec_cs_mtech',i:'💻'},
+            {l:'M.Tech Computer Network Engg',a:'cs_spec_cs_cne',i:'🌐'},
+            {l:'Back',a:'plcmt_group_comp_pg',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+
+    case 'plcmt_group_comp_ug':
+        r.text += T("Computing & IT (UG) Placement Stats:", "Computing & IT (UG) Placement Statistics:");
+        r.buttons = [
+            {l:'CSE 💻',a:'plcmt_cs_ug',i:'💻'},
+            {l:'ISE 💻',a:'plcmt_is_ug',i:'💻'},
+            {l:'AIML 🤖',a:'plcmt_aiml_ug',i:'🤖'},
+            {l:'Back',a:'plcmt_ug_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_elec_ug':
+        r.text += T("Electrical & Communication (UG) Placement Stats:", "Electrical & Communication (UG) Placement Statistics:");
+        r.buttons = [
+            {l:'ECE 📡',a:'plcmt_ec_ug',i:'📡'},
+            {l:'EEE 🔌',a:'plcmt_ee_ug',i:'🔌'},
+            {l:'Telecom 📶',a:'plcmt_et_ug',i:'📶'},
+            {l:'Instrumentation 🎛️',a:'plcmt_ei_ug',i:'🎛️'},
+            {l:'Back',a:'plcmt_ug_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_core_ug':
+        r.text += T("Core Engineering (UG) Placement Stats:", "Core Engineering (UG) Placement Statistics:");
+        r.buttons = [
+            {l:'Mechanical ⚙️',a:'plcmt_me_ug',i:'⚙️'},
+            {l:'Aerospace ✈️',a:'plcmt_ae_ug',i:'✈️'},
+            {l:'Civil 🏗️',a:'plcmt_cv_ug',i:'🏗️'},
+            {l:'Chemical 🧪',a:'plcmt_ch_ug',i:'🧪'},
+            {l:'BioTech 🧬',a:'plcmt_bt_ug',i:'🧬'},
+            {l:'Industrial (IEM) 🏭',a:'plcmt_im_ug',i:'🏭'},
+            {l:'Back',a:'plcmt_ug_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+
+    case 'plcmt_group_comp_pg':
+        r.text += T("Computing & IT (PG) Placement Stats:", "Computing & IT (PG) Placement Statistics:");
+        r.buttons = [
+            {l:'CSE 💻',a:'plcmt_cs_pg',i:'💻'},
+            {l:'ISE 💻',a:'plcmt_is_pg',i:'💻'},
+            {l:'Back',a:'plcmt_pg_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_elec_pg':
+        r.text += T("Electrical & Communication (PG) Placement Stats:", "Electrical & Communication (PG) Placement Statistics:");
+        r.buttons = [
+            {l:'ECE 📡',a:'plcmt_ec_pg',i:'📡'},
+            {l:'EEE 🔌',a:'plcmt_ee_pg',i:'🔌'},
+            {l:'Back',a:'plcmt_pg_categories',i:'🔙'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_core_pg':
+        r.text += T("Core Engineering (PG) Placement Stats:", "Core Engineering (PG) Placement Statistics:");
+        r.buttons = [
+            {l:'Mechanical ⚙️',a:'plcmt_me_pg',i:'⚙️'},
+            {l:'Civil 🏗️',a:'plcmt_cv_pg',i:'🏗️'},
+            {l:'BioTech 🧬',a:'plcmt_bt_pg',i:'🧬'},
+            {l:'Back',a:'plcmt_pg_categories',i:'🔙'}
         ];
         r.noMenu = true; break;
     case 'placements_future':
@@ -3195,6 +3293,47 @@ function getResponse(id) {
                 return r;
             }
         }
+
+        if (id && id.startsWith('cs_spec_')) {
+            const specId = id.replace('cs_spec_', '');
+            const specData = KB.placement_stats[specId];
+            if (specData) {
+                r.text += T(`Here are the ongoing placement statistics for **${specData.name}**: 📊\n\n`, `Ongoing Placement Statistics for ${specData.name}:\n\n`);
+                const prog = specData.ongoing;
+                r.text += `**${prog.name}**\n`;
+                r.text += `  **Number of companies visited:** ${prog.companies}\n`;
+                r.text += `  **Number of offers made:** ${prog.offers}\n`;
+                r.text += `  **Number of students selected:** ${prog.students}\n`;
+                r.text += `  **Average Salary:** ${prog.avg}\n`;
+                r.text += `  **Maximum salary:** ${prog.max}\n\n`;
+                
+                r.buttons = [];
+                if (specData.full && specData.full.length > 0) {
+                    r.buttons.push({l: 'View Full Year-wise Stats 📊', a: `cs_full_${specId}`, i: '📅'});
+                }
+                r.buttons.push({l: 'Back to CSE Branches', a: specId.includes('mtech') || specId.includes('cne') ? 'plcmt_cs_pg' : 'plcmt_cs_ug', i: '🔙'});
+                return r;
+            }
+        }
+        
+        if (id && id.startsWith('cs_full_')) {
+            const specId = id.replace('cs_full_', '');
+            const specData = KB.placement_stats[specId];
+            if (specData && specData.full) {
+                r.text += T(`Here are the full year-wise placement statistics for **${specData.name}**: 📊\n\n`, `Full Year-wise Placement Statistics for ${specData.name}:\n\n`);
+                specData.full.forEach(prog => {
+                    r.text += `**${prog.name}**\n`;
+                    r.text += `  **Number of companies visited:** ${prog.companies}\n`;
+                    r.text += `  **Number of offers made:** ${prog.offers}\n`;
+                    r.text += `  **Number of students selected:** ${prog.students}\n`;
+                    r.text += `  **Average Salary:** ${prog.avg}\n`;
+                    r.text += `  **Maximum salary:** ${prog.max}\n\n`;
+                });
+                r.buttons = [{l: 'Back', a: `cs_spec_${specId}`, i: '🔙'}];
+                return r;
+            }
+        }
+
         // Handle Department Placement requests
         if (id && id.startsWith('plcmt_')) {
             const c = id.replace('plcmt_','');
