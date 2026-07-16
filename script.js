@@ -922,12 +922,44 @@ const KB = {
             ]
         },
         'ec': {
-            "B.E. - Electronics & Communication": [
-                "Software Developer/Engineer", "Telecommunication Engineer", "Embedded Systems Engineer",
-                "IoT Solutions Developer", "VLSI Design Engineer", "Network Engineer",
-                "Data Analyst", "Machine Learning Engineer"
+        name: "Electronics & Communication Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electronics & Communication Engg (2025-26)",
+                companies: 65, offers: 148, students: 136,
+                avg: "16.47 LPA", max: "37.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 77, offers: 167, students: 156, avg: "13.40 LPA", max: "44.72 LPA" },
+                { name: "2023-24", companies: 83, offers: 159, students: 152, avg: "11.27 LPA", max: "25.85 LPA" },
+                { name: "2022-23", companies: 92, offers: 171, students: 161, avg: "12.12 LPA", max: "35.50 LPA" },
+                { name: "2021-22", companies: 206, offers: 180, students: 152, avg: "84.00 LPA", max: "84.00 LPA" }
             ]
         },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. VLSI Design & Embedded Systems (2025-26)",
+                    companies: 23, offers: 29, students: 29, avg: "19.41 LPA", max: "35.00 LPA"
+                },
+                {
+                    name: "M.Tech. Communication Systems (2025-26)",
+                    companies: 9, offers: 6, students: 6, avg: "10.33 LPA", max: "15.00 LPA"
+                }
+            ],
+            full: [
+                { name: "VLSI Design & Embedded Systems (2024-25)", companies: 23, offers: 29, students: 29, avg: "19.41 LPA", max: "35.00 LPA" },
+                { name: "VLSI Design & Embedded Systems (2023-24)", companies: 21, offers: 27, students: 27, avg: "11.97 LPA", max: "19.00 LPA" },
+                { name: "VLSI Design & Embedded Systems (2022-23)", companies: 25, offers: 33, students: 33, avg: "16.18 LPA", max: "26.00 LPA" },
+                { name: "VLSI Design & Embedded Systems (2021-22)", companies: 26, offers: 32, students: 32, avg: "12.75 LPA", max: "29.40 LPA" },
+
+                { name: "Communication Systems (2024-25)", companies: 9, offers: 6, students: 6, avg: "10.33 LPA", max: "15.00 LPA" },
+                { name: "Communication Systems (2023-24)", companies: 13, offers: 9, students: 9, avg: "7.06 LPA", max: "10.00 LPA" },
+                { name: "Communication Systems (2022-23)", companies: 12, offers: 4, students: 4, avg: "8.46 LPA", max: "16.24 LPA" },
+                { name: "Communication Systems (2021-22)", companies: 12, offers: 12, students: 12, avg: "8.05 LPA", max: "16.00 LPA" }
+            ]
+        }
+    },
         'ec_vlsi': {
             "M.Tech. - VLSI Design & Embedded Systems": [
                 "VLSI Design Engineer", "Embedded Systems Engineer", "Hardware Design Engineer",
