@@ -894,6 +894,60 @@ const KB = {
             ]
         }
     },
+    'me': {
+        name: "Mechanical Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Mechanical Engineering (2025-26)",
+                companies: 39, offers: 86, students: 80,
+                avg: "9.22 LPA", max: "18.33 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 44, offers: 88, students: 82, avg: "8.21 LPA", max: "18.33 LPA" },
+                { name: "2023-24", companies: 46, offers: 78, students: 70, avg: "9.07 LPA", max: "18.00 LPA" },
+                { name: "2022-23", companies: 60, offers: 113, students: 85, avg: "8.35 LPA", max: "16.00 LPA" },
+                { name: "2021-22", companies: 45, offers: 112, students: 69, avg: "9.05 LPA", max: "18.00 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. Product Design And Manufacturing (2025-26)",
+                    companies: 6, offers: 8, students: 8, avg: "7.09 LPA", max: "14.00 LPA"
+                },
+                {
+                    name: "M.Tech. Machine Design (2025-26)",
+                    companies: 8, offers: 7, students: 7, avg: "6.02 LPA", max: "8.00 LPA"
+                }
+            ],
+            full: [
+                { name: "Product Design & Manufacturing (2024-25)", companies: 6, offers: 8, students: 8, avg: "7.09 LPA", max: "14.00 LPA" },
+                { name: "Product Design & Manufacturing (2022-23)", companies: 12, offers: 23, students: 23, avg: "6.82 LPA", max: "10.00 LPA" },
+                { name: "Product Design & Manufacturing (2021-22)", companies: 14, offers: 20, students: 20, avg: "6.45 LPA", max: "12.00 LPA" },
+
+                { name: "Machine Design (2024-25)", companies: 8, offers: 7, students: 7, avg: "6.02 LPA", max: "8.00 LPA" },
+                { name: "Machine Design (2022-23)", companies: 10, offers: 17, students: 17, avg: "6.44 LPA", max: "20.00 LPA" },
+                { name: "Machine Design (2021-22)", companies: 12, offers: 15, students: 15, avg: "5.83 LPA", max: "12.00 LPA" }
+            ]
+        }
+    },
+    'mca': {
+        name: "Master of Computer Applications",
+        pg: {
+            ongoing: {
+                name: "Master of Computer Applications (2025-26)",
+                companies: 3, offers: 21, students: 22,
+                avg: "4.00 LPA", max: "11.59 LPA"
+            },
+            full: [
+                { name: "2025-26 (Timeline)", companies: 24, offers: 62, students: 59, avg: "9.00 LPA", max: "20.00 LPA" },
+                { name: "2024-25", companies: 35, offers: 80, students: 80, avg: "8.94 LPA", max: "20.00 LPA" },
+                { name: "2023-24", companies: 52, offers: 132, students: 95, avg: "8.29 LPA", max: "25.00 LPA" },
+                { name: "2021-22", companies: 56, offers: 146, students: 102, avg: "10.00 LPA", max: "28.00 LPA" },
+                { name: "2020-21", companies: 85, offers: 274, students: 210, avg: "7.50 LPA", max: "20.00 LPA" }
+            ]
+        }
+    },
     career_options: {
         'cs': {
             "B.E. - Computer Science & Engineering": [
