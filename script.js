@@ -1047,6 +1047,34 @@ const KB = {
             ]
         }
     },
+        'ee': {
+        name: "Electrical and Electronics Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electrical and Electronics Engineering (2025-26)",
+                companies: 31, offers: 40, students: 36,
+                avg: "12.45 LPA", max: "30.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 33, offers: 49, students: 43, avg: "10.26 LPA", max: "25.72 LPA" },
+                { name: "2023-24", companies: 33, offers: 47, students: 44, avg: "8.83 LPA", max: "22.00 LPA" },
+                { name: "2021-22", companies: 43, offers: 56, students: 49, avg: "10.24 LPA", max: "21.16 LPA" },
+                { name: "2020-21", companies: 41, offers: 55, students: 50, avg: "10.49 LPA", max: "25.24 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: {
+                name: "M.Tech. Power Electronics (2025-26)",
+                companies: 8, offers: 6, students: 6,
+                avg: "6.83 LPA", max: "10.00 LPA"
+            },
+            full: [
+                { name: "2023-24", companies: 14, offers: 11, students: 11, avg: "6.68 LPA", max: "18.00 LPA" },
+                { name: "2021-22", companies: 13, offers: 12, students: 12, avg: "6.17 LPA", max: "9.00 LPA" },
+                { name: "2020-21", companies: 17, offers: 17, students: 17, avg: "6.55 LPA", max: "16.00 LPA" }
+            ]
+        }
+    },
         'ch': {
             "B.E. - Chemical Engineering": [
                 "Academic & Research Professional", "Data & AI Engineer", "Energy Engineer",
