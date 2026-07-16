@@ -861,6 +861,22 @@ const KB = {
         companies: "249 companies participated in 2024 drive",
         offers: "917 total offers with 75% placement rate"
     },
+    'iem': {
+        name: "Industrial Engineering and Management",
+        ug: {
+            ongoing: {
+                name: "B.E. Industrial Engineering and Management (2025-26)",
+                companies: 12, offers: 30, students: 27,
+                avg: "12.46 LPA", max: "21.45 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 30, offers: 51, students: 46, avg: "7.68 LPA", max: "21.45 LPA" },
+                { name: "2023-24", companies: 30, offers: 53, students: 51, avg: "8.39 LPA", max: "20.00 LPA" },
+                { name: "2022-23", companies: 35, offers: 49, students: 49, avg: "9.06 LPA", max: "18.99 LPA" },
+                { name: "2021-22", companies: 38, offers: 66, students: 42, avg: "9.03 LPA", max: "14.95 LPA" }
+            ]
+        }
+    },
     career_options: {
         'cs': {
             "B.E. - Computer Science & Engineering": [
