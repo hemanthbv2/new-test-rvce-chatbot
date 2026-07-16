@@ -877,6 +877,23 @@ const KB = {
             ]
         }
     },
+    'mca': {
+        name: "Master of Computer Applications",
+        pg: {
+            ongoing: {
+                name: "Master of Computer Applications (2025-26)",
+                companies: 3, offers: 21, students: 22,
+                avg: "4.00 LPA", max: "11.59 LPA"
+            },
+            full: [
+                { name: "2025-26 (Timeline)", companies: 24, offers: 62, students: 59, avg: "9.00 LPA", max: "20.00 LPA" },
+                { name: "2024-25", companies: 35, offers: 80, students: 80, avg: "8.94 LPA", max: "20.00 LPA" },
+                { name: "2023-24", companies: 52, offers: 132, students: 95, avg: "8.29 LPA", max: "25.00 LPA" },
+                { name: "2021-22", companies: 56, offers: 146, students: 102, avg: "10.00 LPA", max: "28.00 LPA" },
+                { name: "2020-21", companies: 85, offers: 274, students: 210, avg: "7.50 LPA", max: "20.00 LPA" }
+            ]
+        }
+    },
     career_options: {
         'cs': {
             "B.E. - Computer Science & Engineering": [
