@@ -1010,6 +1010,43 @@ const KB = {
             ]
         }
     },
+        'cv': {
+        name: "Civil Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Civil Engineering (2025-26)",
+                companies: 14, offers: 38, students: 35,
+                avg: "7.03 LPA", max: "18.33 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 25, offers: 82, students: 77, avg: "5.52 LPA", max: "33.00 LPA" },
+                { name: "2023-24", companies: 34, offers: 73, students: 71, avg: "5.11 LPA", max: "10.00 LPA" },
+                { name: "2022-23", companies: 34, offers: 54, students: 50, avg: "6.72 LPA", max: "13.95 LPA" },
+                { name: "2021-22", companies: 33, offers: 38, students: 38, avg: "6.39 LPA", max: "12.09 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. Structural Engineering (2025-26)",
+                    companies: 0, offers: 0, students: 0, avg: "0 LPA", max: "0 LPA"
+                },
+                {
+                    name: "M.Tech. Highway Technology (2025-26)",
+                    companies: 0, offers: 0, students: 0, avg: "0 LPA", max: "0 LPA"
+                }
+            ],
+            full: [
+                { name: "Structural Engg (2023-24)", companies: 6, offers: 10, students: 10, avg: "3.06 LPA", max: "6.00 LPA" },
+                { name: "Structural Engg (2022-23)", companies: 6, offers: 7, students: 7, avg: "4.96 LPA", max: "6.00 LPA" },
+                { name: "Structural Engg (2021-22)", companies: 6, offers: 7, students: 7, avg: "4.22 LPA", max: "5.00 LPA" },
+                
+                { name: "Highway Tech (2023-24)", companies: 8, offers: 13, students: 13, avg: "4.05 LPA", max: "7.00 LPA" },
+                { name: "Highway Tech (2022-23)", companies: 9, offers: 12, students: 12, avg: "5.22 LPA", max: "6.00 LPA" },
+                { name: "Highway Tech (2021-22)", companies: 7, offers: 11, students: 11, avg: "4.74 LPA", max: "5.03 LPA" }
+            ]
+        }
+    },
         'ch': {
             "B.E. - Chemical Engineering": [
                 "Academic & Research Professional", "Data & AI Engineer", "Energy Engineer",
@@ -3431,13 +3468,15 @@ function getResponse(id) {
                     
                     // Check if they use the new structured format
                     if (stats.ongoing) {
-                        const prog = stats.ongoing;
-                        r.text += `**${prog.name}**\n`;
-                        r.text += `• **Number of companies visited:** ${prog.companies}\n`;
-                        r.text += `• **Number of offers made:** ${prog.offers}\n`;
-                        r.text += `• **Number of students selected:** ${prog.students}\n`;
-                        r.text += `• **Average Salary:** ${prog.avg}\n`;
-                        r.text += `• **Maximum salary:** ${prog.max}\n\n`;
+                        const progs = Array.isArray(stats.ongoing) ? stats.ongoing : [stats.ongoing];
+                        progs.forEach(prog => {
+                            r.text += `**${prog.name}**\n`;
+                            r.text += `• **Number of companies visited:** ${prog.companies}\n`;
+                            r.text += `• **Number of offers made:** ${prog.offers}\n`;
+                            r.text += `• **Number of students selected:** ${prog.students}\n`;
+                            r.text += `• **Average Salary:** ${prog.avg}\n`;
+                            r.text += `• **Maximum salary:** ${prog.max}\n\n`;
+                        });
                         
                         r.buttons = [];
                         if (stats.full && stats.full.length > 0) {
