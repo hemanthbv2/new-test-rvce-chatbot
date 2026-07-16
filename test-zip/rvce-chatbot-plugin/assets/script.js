@@ -315,9 +315,9 @@ const QA = [
     {k:['instrumentation','eie','ei','ei department','eie department','instr','instru','ei branch','eie branch'],id:'dept_ei',p:1},
     {k:['industrial engineering','iem','ie','iem department','industrial management','ie branch','iem branch','industrial'],id:'dept_im',p:1},
     // P2: Mid-level
-    {k:['2024 placement','2024 placements','placement 2024','placements 2024','placement stats 2024','2024 stats','2024'],id:'placements2024',p:0.1},
+    {k:['placement stats','placement statistics','placement year','year wise placement','2024 placement','placement 2024','2023 placement','placement 2023','2022 placement','placement 2022','2021 placement','placement 2021','2020 placement','placement 2020','past placements','previous year placements','2024','2023','2022','2021','2020'],id:'placements_yearly',p:0.1},
     {k:['2027 placement','2027 placements','placement 2027','placements 2027','placement stats 2027','2028 placement','2028 placements','2029 placement','2027 stats','2027'],id:'placements_future',p:0.1},
-    {k:['placement','placements','placed','salary','package','lpa','ctc','highest package','average salary','recruit','hiring','companies visit','which companies','recruiters','job','jobs','placement details','plcmnt','plcmnts','campus drive','dream company','mass recruit','superdream','dream offer','placed kya','placement scene','placement stats','on campus placement','off campus placement'],id:'placements',p:0.5},
+    {k:['placement','placements','placed','salary','package','lpa','ctc','highest package','average salary','recruit','hiring','companies visit','which companies','recruiters','job','jobs','placement details','plcmnt','plcmnts','campus drive','dream company','mass recruit','superdream','dream offer','placed kya','placement scene','on campus placement','off campus placement'],id:'placements',p:0.5},
     {k:['admission','admissions','how to apply','how to join','entrance','eligibility','enroll','apply to rvce','join rvce','get into rvce','admission process','how to get admission','ug adm','pg adm','ug b e','admission kaise','how to get in','want to join','joining process'],id:'admissions',p:1.5},
     {k:['department','departments','branch','branches','stream','streams','course','courses','program','programmes','what courses','all branches','view programs','depts','all depts'],id:'departments',p:2},
     {k:['ug','ug details'],id:'ug_disambiguation',p:2},
@@ -609,14 +609,62 @@ function getResponse(id) {
         r.text += T("Tuition fees depend on the admission quota:<br>• <strong>KCET:</strong> ~₹1,00,000 to ₹1,20,000 per year<br>• <strong>COMEDK:</strong> ~₹2,50,000 to ₹3,00,000 per year<br>• <strong>Management:</strong> Can exceed ₹10L depending on branch.<br><em>Note: Hostels cost an additional ₹1.1L - ₹1.3L per year.</em>",
             "Tuition fees depend on the admission quota:<br>• <strong>KCET:</strong> ~₹1,00,000 to ₹1,20,000 per year<br>• <strong>COMEDK:</strong> ~₹2,50,000 to ₹3,00,000 per year<br>• <strong>Management:</strong> ~₹16L to ₹70L total over 4 years.");
         r.buttons = [{l:'Admissions Info',a:'admissions',i:'🎓'}]; break;
-    case 'placements2024':
-        r.text += T("Here are the placement statistics for the 2024 batch: 📊", "Placement Statistics (2024 Batch):");
-        r.text += "\n• Highest Package: " + KB.placements2024.maxSalary + "\n• " + KB.placements2024.companies + "\n• " + KB.placements2024.offers;
-        r.buttons = [{l:'2026 Placements',a:'placements',i:'💼'}, {l:'Department-wise Stats',a:'dept_placements_list',i:'📊'}]; break;
+    case 'placements_yearly':
+        r.text += T("Here are the year-wise placement statistics for Computer Science & Engineering (2020-2025): 📊", "Year-wise Placement Statistics (CSE):");
+        r.text += "\n\n**B.E. CSE (2024-25)**\n• Companies Visited: 91 | Offers Made: 190\n• Students Selected: 171\n• Avg Salary: 16.92 LPA | Max Salary: 67 LPA";
+        r.text += "\n\n**B.E. CSE (2023-24)**\n• Companies Visited: 81 | Offers Made: 177\n• Students Selected: 166\n• Avg Salary: 15.81 LPA | Max Salary: 67 LPA";
+        r.text += "\n\n**B.E. CSE (2022-23)**\n• Companies Visited: 103 | Offers Made: 225\n• Students Selected: 178\n• Avg Salary: 14.66 LPA | Max Salary: 48 LPA";
+        r.text += "\n\n**B.E. CSE (2021-22)**\n• Companies Visited: 110 | Offers Made: 212\n• Students Selected: 179\n• Avg Salary: 14.12 LPA | Max Salary: 35.37 LPA";
+        r.text += "\n\n**B.E. CSE (2020-21)**\n• Companies Visited: 95 | Offers Made: 202\n• Students Selected: 163\n• Avg Salary: 15.01 LPA | Max Salary: 32 LPA";
+        r.text += "\n\n**M.Tech. CSE (2024-25*)**\n• Companies Visited: 16 | Offers Made: 14\n• Students Selected: 14\n• Avg Salary: 19.21 LPA | Max Salary: 24 LPA";
+        r.text += "\n\n**M.Tech. CSE (2023-24)**\n• Companies Visited: 17 | Offers Made: 11\n• Students Selected: 11\n• Avg Salary: 15.13 LPA | Max Salary: 25 LPA";
+        r.text += "\n\n**M.Tech. CSE (2022-23)**\n• Companies Visited: 14 | Offers Made: 15\n• Students Selected: 15\n• Avg Salary: 13.01 LPA | Max Salary: 26 LPA";
+        r.text += "\n\n**M.Tech. CSE (2021-22)**\n• Companies Visited: 15 | Offers Made: 16\n• Students Selected: 16\n• Avg Salary: 11.05 LPA | Max Salary: 29.05 LPA";
+        r.text += "\n\n**M.Tech. CSE (2020-21)**\n• Companies Visited: Data unavailable | Offers Made: Data unavailable\n• Students Selected: Data unavailable\n• Avg Salary: Data unavailable | Max Salary: Data unavailable";
+        r.buttons = [{l:'Overall 2026 Placements',a:'placements',i:'💼'}]; break;
     case 'placements_future':
         r.text += T("Placement statistics for the 2027 batch (and beyond) are not yet available as the placement drives for these batches have not concluded. 📊", "Future Placement Statistics:");
         r.text += "\n• Currently, we have the ongoing 2026 placement data and the finalized 2025 data available.";
         r.buttons = [{l:'2026 Placements',a:'placements',i:'💼'}, {l:'Department-wise Stats',a:'dept_placements_list',i:'📊'}]; break;
+    case 'dept_placements_list':
+        r.text += T("Explore our department-wise placement statistics! 📊 Choose a category:", "Department-wise Placement Statistics - Select a category:");
+        r.buttons = [
+            {l:'Computing & IT 💻',a:'plcmt_group_comp',i:'💻'},
+            {l:'Electrical & Comm 🔌',a:'plcmt_group_elec',i:'🔌'},
+            {l:'Core Engineering ⚙️',a:'plcmt_group_core',i:'⚙️'},
+            {l:'Back to Placements',a:'_back',i:'🔙'}
+        ]; break;
+    case 'plcmt_group_comp':
+        r.text += T("Computing & IT Placement Stats:", "Computing & IT Placement Statistics:");
+        r.buttons = [
+            {l:'CSE 💻',a:'plcmt_cs',i:'💻'},
+            {l:'ISE 💻',a:'plcmt_is',i:'💻'},
+            {l:'AIML 🤖',a:'plcmt_aiml',i:'🤖'},
+            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_elec':
+        r.text += T("Electrical & Communication Placement Stats:", "Electrical & Communication Placement Statistics:");
+        r.buttons = [
+            {l:'ECE 📡',a:'plcmt_ec',i:'📡'},
+            {l:'EEE 🔌',a:'plcmt_ee',i:'🔌'},
+            {l:'Telecom 📶',a:'plcmt_et',i:'📶'},
+            {l:'Instrumentation 🎛️',a:'plcmt_ei',i:'🎛️'},
+            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+        ];
+        r.noMenu = true; break;
+    case 'plcmt_group_core':
+        r.text += T("Core Engineering Placement Stats:", "Core Engineering Placement Statistics:");
+        r.buttons = [
+            {l:'Mechanical ⚙️',a:'plcmt_me',i:'⚙️'},
+            {l:'Aerospace ✈️',a:'plcmt_ae',i:'✈️'},
+            {l:'Civil 🏗️',a:'plcmt_cv',i:'🏗️'},
+            {l:'Chemical 🧪',a:'plcmt_ch',i:'🧪'},
+            {l:'BioTech 🧬',a:'plcmt_bt',i:'🧬'},
+            {l:'Industrial (IEM) 🏭',a:'plcmt_im',i:'🏭'},
+            {l:'All Departments',a:'dept_placements_list',i:'📊'}
+        ];
+        r.noMenu = true; break;
     case 'placements':
         r.text += T("Our record is legendary! 🚀","Placement Statistics:");
         r.text += "\n• Max: " + KB.placements.maxSalary + "\n• Avg: " + KB.placements.avgSalary + "\n• " + KB.placements.offers + "\n• " + KB.placements.companies;
