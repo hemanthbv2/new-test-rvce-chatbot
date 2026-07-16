@@ -978,385 +978,6 @@ const KB = {
             ]
         }
     },
-    career_options: {
-        'cs': {
-            "B.E. - Computer Science & Engineering": [
-                "Software Developer/Engineer", "Data Scientist/Analyst", "DevOps Engineer", 
-                "AIML Engineer", "Cybersecurity Analyst", "Full-Stack Developer", 
-                "Blockchain Developer", "Cybersecurity Specialist"
-            ]
-        },
-        'csds': {
-            "B.E. - CSE (Data Science)": [
-                "Data Scientist", "Data Engineer", "Machine Learning Engineer", 
-                "Business Intelligence (BI) Analyst", "Big Data Engineer", 
-                "Data Architect", "Research Scientist", "Data Analyst"
-            ]
-        },
-        'cscy': {
-            "B.E. - CSE (Cybersecurity)": [
-                "Cyber Security Analyst", "Network Security Engineer", "Cloud Security Engineer", 
-                "Security Architect", "Security Operations Center (SOC) Analyst", 
-                "Digital Forensics Analyst", "Vulnerability Analyst / Ethical Hacker", 
-                "Cyber Security Consultant"
-            ]
-        },
-        'cs_cse': {
-            "M.Tech. - Computer Science & Engineering": [
-                "Software Architect", "Machine Learning Engineer", "Cloud Solutions Architect", 
-                "Big Data Engineer", "DevOps Engineer", "Cybersecurity Specialist", 
-                "AI/ML Research Engineer", "Data Scientist / Analyst"
-            ]
-        },
-        'cs_cne': {
-            "M.Tech. - Computer Network Engineering": [
-                "Network Engineer", "Network Administrator", "Network Architect", 
-                "Network Security Engineer", "Network Analyst", "DevOps Engineer", 
-                "Data Scientist/Engineer", "Cloud Network Engineer"
-            ]
-        },
-        'is': {
-        name: "Information Science and Engineering",
-        ug: {
-            ongoing: {
-                name: "B.E. Information Science and Engineering (2025-26)",
-                companies: 43, offers: 67, students: 57,
-                avg: "19.11 LPA", max: "67.00 LPA"
-            },
-            full: [
-                { name: "2024-25", companies: 55, offers: 71, students: 62, avg: "15.41 LPA", max: "67.00 LPA" },
-                { name: "2023-24", companies: 51, offers: 61, students: 55, avg: "16.37 LPA", max: "92.00 LPA" },
-                { name: "2022-23", companies: 63, offers: 73, students: 60, avg: "14.12 LPA", max: "62.00 LPA" },
-                { name: "2021-22", companies: 67, offers: 74, students: 56, avg: "14.12 LPA", max: "32.50 LPA" }
-            ]
-        },
-        pg: {
-            ongoing: [
-                {
-                    name: "M.Tech. Software Engineering (2025-26)",
-                    companies: 13, offers: 10, students: 10, avg: "15.18 LPA", max: "23.00 LPA"
-                },
-                {
-                    name: "M.Tech. Information Technology (2025-26)",
-                    companies: 14, offers: 9, students: 9, avg: "14.70 LPA", max: "21.00 LPA"
-                }
-            ],
-            full: [
-                { name: "Software Engineering (2024-25)", companies: 13, offers: 10, students: 10, avg: "15.18 LPA", max: "23.00 LPA" },
-                { name: "Software Engineering (2023-24)", companies: 13, offers: 8, students: 8, avg: "7.95 LPA", max: "12.00 LPA" },
-                { name: "Software Engineering (2022-23)", companies: 14, offers: 11, students: 11, avg: "10.00 LPA", max: "26.25 LPA" },
-                { name: "Software Engineering (2021-22)", companies: 14, offers: 13, students: 13, avg: "9.10 LPA", max: "25.00 LPA" },
-
-                { name: "Information Technology (2024-25)", companies: 14, offers: 9, students: 9, avg: "14.70 LPA", max: "21.00 LPA" },
-                { name: "Information Technology (2023-24)", companies: 14, offers: 10, students: 10, avg: "5.65 LPA", max: "10.00 LPA" },
-                { name: "Information Technology (2022-23)", companies: 14, offers: 7, students: 7, avg: "11.00 LPA", max: "19.00 LPA" },
-                { name: "Information Technology (2021-22)", companies: 14, offers: 14, students: 14, avg: "10.95 LPA", max: "28.00 LPA" }
-            ]
-        }
-    },
-        'ec': {
-        name: "Electronics & Communication Engineering",
-        ug: {
-            ongoing: {
-                name: "B.E. Electronics & Communication Engg (2025-26)",
-                companies: 65, offers: 148, students: 136,
-                avg: "16.47 LPA", max: "37.00 LPA"
-            },
-            full: [
-                { name: "2024-25", companies: 77, offers: 167, students: 156, avg: "13.40 LPA", max: "44.72 LPA" },
-                { name: "2023-24", companies: 83, offers: 159, students: 152, avg: "11.27 LPA", max: "25.85 LPA" },
-                { name: "2022-23", companies: 92, offers: 171, students: 161, avg: "12.12 LPA", max: "35.50 LPA" },
-                { name: "2021-22", companies: 206, offers: 180, students: 152, avg: "84.00 LPA", max: "84.00 LPA" }
-            ]
-        },
-        pg: {
-            ongoing: [
-                {
-                    name: "M.Tech. VLSI Design & Embedded Systems (2025-26)",
-                    companies: 23, offers: 29, students: 29, avg: "19.41 LPA", max: "35.00 LPA"
-                },
-                {
-                    name: "M.Tech. Communication Systems (2025-26)",
-                    companies: 9, offers: 6, students: 6, avg: "10.33 LPA", max: "15.00 LPA"
-                }
-            ],
-            full: [
-                { name: "VLSI Design & Embedded Systems (2024-25)", companies: 23, offers: 29, students: 29, avg: "19.41 LPA", max: "35.00 LPA" },
-                { name: "VLSI Design & Embedded Systems (2023-24)", companies: 21, offers: 27, students: 27, avg: "11.97 LPA", max: "19.00 LPA" },
-                { name: "VLSI Design & Embedded Systems (2022-23)", companies: 25, offers: 33, students: 33, avg: "16.18 LPA", max: "26.00 LPA" },
-                { name: "VLSI Design & Embedded Systems (2021-22)", companies: 26, offers: 32, students: 32, avg: "12.75 LPA", max: "29.40 LPA" },
-
-                { name: "Communication Systems (2024-25)", companies: 9, offers: 6, students: 6, avg: "10.33 LPA", max: "15.00 LPA" },
-                { name: "Communication Systems (2023-24)", companies: 13, offers: 9, students: 9, avg: "7.06 LPA", max: "10.00 LPA" },
-                { name: "Communication Systems (2022-23)", companies: 12, offers: 4, students: 4, avg: "8.46 LPA", max: "16.24 LPA" },
-                { name: "Communication Systems (2021-22)", companies: 12, offers: 12, students: 12, avg: "8.05 LPA", max: "16.00 LPA" }
-            ]
-        }
-    },
-        'ec_vlsi': {
-            "M.Tech. - VLSI Design & Embedded Systems": [
-                "VLSI Design Engineer", "Embedded Systems Engineer", "Hardware Design Engineer",
-                "Firmware Engineer", "FPGA Design Engineer", "Physical Design Engineer",
-                "R&D Engineer", "Verification Engineer"
-            ]
-        },
-        'ec_cs': {
-            "M.Tech. - Communication Systems": [
-                "Satellite Communication Engineer", "Signal Processing Engineer", "Telecom Engineer",
-                "IoT Communication Engineer", "Wireless Communication Engineer",
-                "Communication Systems Engineer", "RF Engineer", "Verification Engineer"
-            ]
-        },
-        'ae': {
-        name: "Aerospace Engineering",
-        ongoing: {
-            name: "B.E. Aerospace Engineering (2025-26)",
-            companies: 18, offers: 30, students: 30,
-            avg: "8.12 LPA", max: "11.00 LPA"
-        },
-        'aiml': {
-        name: "AI & Machine Learning",
-        ongoing: {
-            name: "B.E. AI & Machine Learning (2025-26)",
-            companies: 47, offers: 63, students: 54,
-            avg: "17.29 LPA", max: "53.00 LPA"
-        },
-        full: []
-    },
-        full: [
-            { name: "2024-25", companies: 18, offers: 33, students: 28, avg: "7.02 LPA", max: "13.50 LPA" },
-            { name: "2023-24", companies: 23, offers: 38, students: 33, avg: "6.83 LPA", max: "10.00 LPA" },
-            { name: "2022-23", companies: 27, offers: 40, students: 33, avg: "7.60 LPA", max: "13.00 LPA" },
-            { name: "2021-22", companies: 35, offers: 48, students: 44, avg: "7.83 LPA", max: "15.00 LPA" }
-        ]
-    },
-        'bt': {
-        name: "Biotechnology",
-        ug: {
-            ongoing: {
-                name: "B.E. in Biotechnology (2025-26)",
-                companies: 5, offers: 8, students: 8,
-                avg: "9.28 LPA", max: "14.81 LPA"
-            },
-            full: [
-                { name: "2021-25", companies: 21, offers: 27, students: 27, avg: "4.75 LPA", max: "14.81 LPA" },
-                { name: "2020-24", companies: "-", offers: 40, students: 40, avg: "5.49 LPA", max: "12.00 LPA" },
-                { name: "2019-23", companies: "-", offers: 30, students: 30, avg: "5.42 LPA", max: "11.60 LPA" },
-                { name: "2018-22", companies: "-", offers: 21, students: 21, avg: "5.42 LPA", max: "16.00 LPA" }
-            ]
-        },
-        pg: {
-            ongoing: {
-                name: "M.Tech. in Biotechnology (2025-26)",
-                companies: 6, offers: 14, students: 14,
-                avg: "4.30 LPA", max: "5.50 LPA"
-            },
-            full: [
-                { name: "2022-24", companies: "-", offers: 8, students: 8, avg: "3.35 LPA", max: "5.80 LPA" },
-                { name: "2021-23", companies: "-", offers: 14, students: 14, avg: "3.80 LPA", max: "6.21 LPA" },
-                { name: "2020-22", companies: "-", offers: 11, students: 11, avg: "3.50 LPA", max: "4.20 LPA" },
-                { name: "2019-21", companies: "-", offers: 9, students: 9, avg: "3.00 LPA", max: "3.80 LPA" }
-            ]
-        }
-    },
-        'ch': {
-        name: "Chemical Engineering",
-        ug: {
-            ongoing: {
-                name: "B.E. Chemical Engineering (2025-26)",
-                companies: 10, offers: 21, students: 18,
-                avg: "9.44 LPA", max: "18.33 LPA"
-            },
-            full: [
-                { name: "2024-25", companies: 23, offers: 28, students: 28, avg: "6.69 LPA", max: "14.63 LPA" },
-                { name: "2023-24", companies: 20, offers: 25, students: 25, avg: "6.78 LPA", max: "15.70 LPA" },
-                { name: "2022-23", companies: 23, offers: 26, students: 21, avg: "7.70 LPA", max: "13.95 LPA" },
-                { name: "2021-22", companies: 27, offers: 31, students: 26, avg: "7.14 LPA", max: "12.90 LPA" }
-            ]
-        }
-    },
-        'cv': {
-        name: "Civil Engineering",
-        ug: {
-            ongoing: {
-                name: "B.E. Civil Engineering (2025-26)",
-                companies: 14, offers: 38, students: 35,
-                avg: "7.03 LPA", max: "18.33 LPA"
-            },
-            full: [
-                { name: "2024-25", companies: 25, offers: 82, students: 77, avg: "5.52 LPA", max: "33.00 LPA" },
-                { name: "2023-24", companies: 34, offers: 73, students: 71, avg: "5.11 LPA", max: "10.00 LPA" },
-                { name: "2022-23", companies: 34, offers: 54, students: 50, avg: "6.72 LPA", max: "13.95 LPA" },
-                { name: "2021-22", companies: 33, offers: 38, students: 38, avg: "6.39 LPA", max: "12.09 LPA" }
-            ]
-        },
-        pg: {
-            ongoing: [
-                {
-                    name: "M.Tech. Structural Engineering (2025-26)",
-                    companies: 0, offers: 0, students: 0, avg: "0 LPA", max: "0 LPA"
-                },
-                {
-                    name: "M.Tech. Highway Technology (2025-26)",
-                    companies: 0, offers: 0, students: 0, avg: "0 LPA", max: "0 LPA"
-                }
-            ],
-            full: [
-                { name: "Structural Engg (2023-24)", companies: 6, offers: 10, students: 10, avg: "3.06 LPA", max: "6.00 LPA" },
-                { name: "Structural Engg (2022-23)", companies: 6, offers: 7, students: 7, avg: "4.96 LPA", max: "6.00 LPA" },
-                { name: "Structural Engg (2021-22)", companies: 6, offers: 7, students: 7, avg: "4.22 LPA", max: "5.00 LPA" },
-                
-                { name: "Highway Tech (2023-24)", companies: 8, offers: 13, students: 13, avg: "4.05 LPA", max: "7.00 LPA" },
-                { name: "Highway Tech (2022-23)", companies: 9, offers: 12, students: 12, avg: "5.22 LPA", max: "6.00 LPA" },
-                { name: "Highway Tech (2021-22)", companies: 7, offers: 11, students: 11, avg: "4.74 LPA", max: "5.03 LPA" }
-            ]
-        }
-    },
-        'ee': {
-        name: "Electrical and Electronics Engineering",
-        ug: {
-            ongoing: {
-                name: "B.E. Electrical and Electronics Engineering (2025-26)",
-                companies: 31, offers: 40, students: 36,
-                avg: "12.45 LPA", max: "30.00 LPA"
-            },
-            full: [
-                { name: "2024-25", companies: 33, offers: 49, students: 43, avg: "10.26 LPA", max: "25.72 LPA" },
-                { name: "2023-24", companies: 33, offers: 47, students: 44, avg: "8.83 LPA", max: "22.00 LPA" },
-                { name: "2021-22", companies: 43, offers: 56, students: 49, avg: "10.24 LPA", max: "21.16 LPA" },
-                { name: "2020-21", companies: 41, offers: 55, students: 50, avg: "10.49 LPA", max: "25.24 LPA" }
-            ]
-        },
-        pg: {
-            ongoing: {
-                name: "M.Tech. Power Electronics (2025-26)",
-                companies: 8, offers: 6, students: 6,
-                avg: "6.83 LPA", max: "10.00 LPA"
-            },
-            full: [
-                { name: "2023-24", companies: 14, offers: 11, students: 11, avg: "6.68 LPA", max: "18.00 LPA" },
-                { name: "2021-22", companies: 13, offers: 12, students: 12, avg: "6.17 LPA", max: "9.00 LPA" },
-                { name: "2020-21", companies: 17, offers: 17, students: 17, avg: "6.55 LPA", max: "16.00 LPA" }
-            ]
-        }
-    },
-        'ch': {
-            "B.E. - Chemical Engineering": [
-                "Academic & Research Professional", "Data & AI Engineer", "Energy Engineer",
-                "Design & Simulation Expert", "Consultant", "Pharmaceutical Engineer",
-                "Process Engineer", "R&D Scientist"
-            ]
-        },
-        'cv': {
-            "B.E. - Civil Engineering": [
-                "Site Engineer", "Quality and Safety Engineer", "Graduate Engineer Trainee",
-                "Entrepreneur", "Civil Service/ Engineering Services and Govt Engineers",
-                "Project Management Co-ordinators", "Business Development Associate"
-            ]
-        },
-        'cv_se': {
-            "M.Tech. - Structural Engineering": [
-                "Contractor/Enterpreneur", "Civil Service/ Engineering Services and Govt Engineers",
-                "Structural Consultants", "Project Assistants/ Research Assistants", "Design Engineer"
-            ]
-        },
-        'cv_ht': {
-            "M.Tech. - Highway Technology": [
-                "Contractor/Enterpreneur", "Engineering Services and Govt Engineers",
-                "Engineers for Construction Companies", "Project Assistants/ Research Assistants",
-                "Engineer for Design/PMC and Consulting firms"
-            ]
-        },
-        'ee': {
-            "B.E. - Electrical & Electronics": [
-                "Telecommunication Engineer", "Hardware Engineer", "Power Systems Engineer",
-                "Control Systems Engineer", "VLSI Design Engineer", "Embedded Systems Engineer",
-                "Automation Engineer", "IoT Engineer"
-            ]
-        },
-        'ee_pe': {
-            "M.Tech. - Power Electronics": [
-                "Embedded Systems Engineer", "Power Electronics Design Engineer", "Power Converter Design Engineer",
-                "Control Systems Engineer", "Application Engineer - Drives and Automation",
-                "Academician/Researcher in Power Electronics", "R&D Engineer (Power Systems/Devices)"
-            ]
-        },
-        'ei': {
-        name: "Electronics and Instrumentation Engineering",
-        ug: {
-            ongoing: {
-                name: "B.E. Electronics and Instrumentation Engineering (2025-26)",
-                companies: 27, offers: 53, students: 46,
-                avg: "11.77 LPA", max: "37.00 LPA"
-            },
-            full: [
-                { name: "2024-25", companies: 31, offers: 55, students: 51, avg: "9.28 LPA", max: "39.00 LPA" },
-                { name: "2023-24", companies: 30, offers: 46, students: 43, avg: "9.29 LPA", max: "18.35 LPA" },
-                { name: "2022-23", companies: 41, offers: 56, students: 45, avg: "9.59 LPA", max: "19.19 LPA" },
-                { name: "2021-22", companies: 40, offers: 74, students: 54, avg: "11.11 LPA", max: "31.76 LPA" }
-            ]
-        }
-    },
-        'et': {
-            "B.E. - Electronics & Telecommunication": [
-                "R&D Engineer", "Hardware Engineer", "Embedded Engineer",
-                "Automation Engineer", "Software Engineer", "Firmware Engineer",
-                "Surface Mount Device", "Data Engineer"
-            ]
-        },
-        'et_dc': {
-            "M.Tech. - Digital Communication Engineering": [
-                "Software Engineer", "Hardware Engineer", "Automation Engineer",
-                "Embedded Engineer", "Surface Mount Device", "Firmware Engineer",
-                "Data Engineer", "R&D Engineer"
-            ]
-        },
-        'im': {
-            "B.E. - Industrial Engineering & Management": [
-                "Operations Engineer", "Supply Chain Manager", "Quality Control Engineer",
-                "Business Analyst", "Production Planner", "Manufacturing Engineer",
-                "Project Manager"
-            ]
-        },
-        'me': {
-            "B.E. - Mechanical Engineering": [
-                "Design Engineer", "Production Engineer", "Thermal Engineer",
-                "Quality Control Engineer", "HVAC Engineer", "Manufacturing Engineer",
-                "Maintenance Engineer", "Automotive Engineer"
-            ]
-        },
-        'me_pd': {
-            "M.Tech. - Product Design and Manufacturing": [
-                "Product Design Engineer", "Manufacturing Engineer", "CAD/CAM Engineer",
-                "Research and Development Engineer", "Quality Assurance Engineer",
-                "Industrial Design Engineer", "Tool Design Engineer", "Production Planning Engineer"
-            ]
-        },
-        'me_md': {
-            "M.Tech. - Machine Design": [
-                "Machine Design Engineer", "CAD Design Engineer", "R&D Engineer", "Structural Analyst",
-                "Product Development Engineer", "Mechanical Systems Engineer", "Project Engineer", "Automotive Design Engineer"
-            ]
-        },
-        'mca': {
-            "Master of Computer Applications (MCA)": [
-                "Lead Software Engineer", "IT Consultant", "Systems Analyst", "Application Developer",
-                "Cybersecurity Analyst", "UX/UI Designer", "Data Scientist"
-            ]
-        },
-        'is_se': {
-            "M.Tech. - Software Engineering": [
-                "Software Architect", "Cloud Solutions Architect", "DevOps Engineer", "Technical Consultant",
-                "Data Engineer", "Cybersecurity Analyst", "Full Stack Developer", "Machine Learning Engineer"
-            ]
-        },
-        'is_it': {
-            "M.Tech. - Information Technology": [
-                "IT Project Manager", "Cloud Solutions Architect", "Software Architect", "Technical Consultant",
-                "Data Scientist", "Big Data Specialist", "Blockchain Developer", "Software Developer"
-            ]
-        }
-    },
     hostelDetails: {
         boysBlocks: { chamundi: "1st year UG", cauvery: "2nd & 3rd year UG", cauveryAnnex: "1st year UG", sirMV: "Final year UG & PG" },
         girlsBlocks: { djBlock: "1st year & higher sem B.E. (On-campus)", krishnaGarden: "Higher sem B.E., M.Tech, MCA (Off-campus, Pattanagere)" },
@@ -2122,18 +1743,342 @@ KB.placement_stats = {
             { name: "M.Tech. CNE (2020-21)", companies: "Data unavailable", offers: "Data unavailable", students: "Data unavailable", avg: "Data unavailable", max: "Data unavailable" }
         ]
     },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+'ae': {
+        name: "Aerospace Engineering",
+        ongoing: {
+            name: "B.E. Aerospace Engineering (2025-26)",
+            companies: 18, offers: 30, students: 30,
+            avg: "8.12 LPA", max: "11.00 LPA"
+        },
+        'aiml': {
+        name: "AI & Machine Learning",
+        ongoing: {
+            name: "B.E. AI & Machine Learning (2025-26)",
+            companies: 47, offers: 63, students: 54,
+            avg: "17.29 LPA", max: "53.00 LPA"
+        },
+        full: []
+    },
+        full: [
+            { name: "2024-25", companies: 18, offers: 33, students: 28, avg: "7.02 LPA", max: "13.50 LPA" },
+            { name: "2023-24", companies: 23, offers: 38, students: 33, avg: "6.83 LPA", max: "10.00 LPA" },
+            { name: "2022-23", companies: 27, offers: 40, students: 33, avg: "7.60 LPA", max: "13.00 LPA" },
+            { name: "2021-22", companies: 35, offers: 48, students: 44, avg: "7.83 LPA", max: "15.00 LPA" }
+        ]
+    },
+'aiml': {
+        name: "AI & Machine Learning",
+        ongoing: {
+            name: "B.E. AI & Machine Learning (2025-26)",
+            companies: 47, offers: 63, students: 54,
+            avg: "17.29 LPA", max: "53.00 LPA"
+        },
+        full: []
+    },
+'bt': {
+        name: "Biotechnology",
+        ug: {
+            ongoing: {
+                name: "B.E. in Biotechnology (2025-26)",
+                companies: 5, offers: 8, students: 8,
+                avg: "9.28 LPA", max: "14.81 LPA"
+            },
+            full: [
+                { name: "2021-25", companies: 21, offers: 27, students: 27, avg: "4.75 LPA", max: "14.81 LPA" },
+                { name: "2020-24", companies: "-", offers: 40, students: 40, avg: "5.49 LPA", max: "12.00 LPA" },
+                { name: "2019-23", companies: "-", offers: 30, students: 30, avg: "5.42 LPA", max: "11.60 LPA" },
+                { name: "2018-22", companies: "-", offers: 21, students: 21, avg: "5.42 LPA", max: "16.00 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: {
+                name: "M.Tech. in Biotechnology (2025-26)",
+                companies: 6, offers: 14, students: 14,
+                avg: "4.30 LPA", max: "5.50 LPA"
+            },
+            full: [
+                { name: "2022-24", companies: "-", offers: 8, students: 8, avg: "3.35 LPA", max: "5.80 LPA" },
+                { name: "2021-23", companies: "-", offers: 14, students: 14, avg: "3.80 LPA", max: "6.21 LPA" },
+                { name: "2020-22", companies: "-", offers: 11, students: 11, avg: "3.50 LPA", max: "4.20 LPA" },
+                { name: "2019-21", companies: "-", offers: 9, students: 9, avg: "3.00 LPA", max: "3.80 LPA" }
+            ]
+        }
+    },
+'ch': {
+        name: "Chemical Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Chemical Engineering (2025-26)",
+                companies: 10, offers: 21, students: 18,
+                avg: "9.44 LPA", max: "18.33 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 23, offers: 28, students: 28, avg: "6.69 LPA", max: "14.63 LPA" },
+                { name: "2023-24", companies: 20, offers: 25, students: 25, avg: "6.78 LPA", max: "15.70 LPA" },
+                { name: "2022-23", companies: 23, offers: 26, students: 21, avg: "7.70 LPA", max: "13.95 LPA" },
+                { name: "2021-22", companies: 27, offers: 31, students: 26, avg: "7.14 LPA", max: "12.90 LPA" }
+            ]
+        }
+    },
+'cv': {
+        name: "Civil Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Civil Engineering (2025-26)",
+                companies: 14, offers: 38, students: 35,
+                avg: "7.03 LPA", max: "18.33 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 25, offers: 82, students: 77, avg: "5.52 LPA", max: "33.00 LPA" },
+                { name: "2023-24", companies: 34, offers: 73, students: 71, avg: "5.11 LPA", max: "10.00 LPA" },
+                { name: "2022-23", companies: 34, offers: 54, students: 50, avg: "6.72 LPA", max: "13.95 LPA" },
+                { name: "2021-22", companies: 33, offers: 38, students: 38, avg: "6.39 LPA", max: "12.09 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. Structural Engineering (2025-26)",
+                    companies: 0, offers: 0, students: 0, avg: "0 LPA", max: "0 LPA"
+                },
+                {
+                    name: "M.Tech. Highway Technology (2025-26)",
+                    companies: 0, offers: 0, students: 0, avg: "0 LPA", max: "0 LPA"
+                }
+            ],
+            full: [
+                { name: "Structural Engg (2023-24)", companies: 6, offers: 10, students: 10, avg: "3.06 LPA", max: "6.00 LPA" },
+                { name: "Structural Engg (2022-23)", companies: 6, offers: 7, students: 7, avg: "4.96 LPA", max: "6.00 LPA" },
+                { name: "Structural Engg (2021-22)", companies: 6, offers: 7, students: 7, avg: "4.22 LPA", max: "5.00 LPA" },
+                
+                { name: "Highway Tech (2023-24)", companies: 8, offers: 13, students: 13, avg: "4.05 LPA", max: "7.00 LPA" },
+                { name: "Highway Tech (2022-23)", companies: 9, offers: 12, students: 12, avg: "5.22 LPA", max: "6.00 LPA" },
+                { name: "Highway Tech (2021-22)", companies: 7, offers: 11, students: 11, avg: "4.74 LPA", max: "5.03 LPA" }
+            ]
+        }
+    },
+'ec': {
+        name: "Electronics & Communication Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electronics & Communication Engg (2025-26)",
+                companies: 65, offers: 148, students: 136,
+                avg: "16.47 LPA", max: "37.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 77, offers: 167, students: 156, avg: "13.40 LPA", max: "44.72 LPA" },
+                { name: "2023-24", companies: 83, offers: 159, students: 152, avg: "11.27 LPA", max: "25.85 LPA" },
+                { name: "2022-23", companies: 92, offers: 171, students: 161, avg: "12.12 LPA", max: "35.50 LPA" },
+                { name: "2021-22", companies: 206, offers: 180, students: 152, avg: "84.00 LPA", max: "84.00 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. VLSI Design & Embedded Systems (2025-26)",
+                    companies: 23, offers: 29, students: 29, avg: "19.41 LPA", max: "35.00 LPA"
+                },
+                {
+                    name: "M.Tech. Communication Systems (2025-26)",
+                    companies: 9, offers: 6, students: 6, avg: "10.33 LPA", max: "15.00 LPA"
+                }
+            ],
+            full: [
+                { name: "VLSI Design & Embedded Systems (2024-25)", companies: 23, offers: 29, students: 29, avg: "19.41 LPA", max: "35.00 LPA" },
+                { name: "VLSI Design & Embedded Systems (2023-24)", companies: 21, offers: 27, students: 27, avg: "11.97 LPA", max: "19.00 LPA" },
+                { name: "VLSI Design & Embedded Systems (2022-23)", companies: 25, offers: 33, students: 33, avg: "16.18 LPA", max: "26.00 LPA" },
+                { name: "VLSI Design & Embedded Systems (2021-22)", companies: 26, offers: 32, students: 32, avg: "12.75 LPA", max: "29.40 LPA" },
+
+                { name: "Communication Systems (2024-25)", companies: 9, offers: 6, students: 6, avg: "10.33 LPA", max: "15.00 LPA" },
+                { name: "Communication Systems (2023-24)", companies: 13, offers: 9, students: 9, avg: "7.06 LPA", max: "10.00 LPA" },
+                { name: "Communication Systems (2022-23)", companies: 12, offers: 4, students: 4, avg: "8.46 LPA", max: "16.24 LPA" },
+                { name: "Communication Systems (2021-22)", companies: 12, offers: 12, students: 12, avg: "8.05 LPA", max: "16.00 LPA" }
+            ]
+        }
+    },
+'ei': {
+        name: "Electronics and Instrumentation Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electronics and Instrumentation Engineering (2025-26)",
+                companies: 27, offers: 53, students: 46,
+                avg: "11.77 LPA", max: "37.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 31, offers: 55, students: 51, avg: "9.28 LPA", max: "39.00 LPA" },
+                { name: "2023-24", companies: 30, offers: 46, students: 43, avg: "9.29 LPA", max: "18.35 LPA" },
+                { name: "2022-23", companies: 41, offers: 56, students: 45, avg: "9.59 LPA", max: "19.19 LPA" },
+                { name: "2021-22", companies: 40, offers: 74, students: 54, avg: "11.11 LPA", max: "31.76 LPA" }
+            ]
+        }
+    },
+'is': {
+        name: "Information Science and Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Information Science and Engineering (2025-26)",
+                companies: 43, offers: 67, students: 57,
+                avg: "19.11 LPA", max: "67.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 55, offers: 71, students: 62, avg: "15.41 LPA", max: "67.00 LPA" },
+                { name: "2023-24", companies: 51, offers: 61, students: 55, avg: "16.37 LPA", max: "92.00 LPA" },
+                { name: "2022-23", companies: 63, offers: 73, students: 60, avg: "14.12 LPA", max: "62.00 LPA" },
+                { name: "2021-22", companies: 67, offers: 74, students: 56, avg: "14.12 LPA", max: "32.50 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. Software Engineering (2025-26)",
+                    companies: 13, offers: 10, students: 10, avg: "15.18 LPA", max: "23.00 LPA"
+                },
+                {
+                    name: "M.Tech. Information Technology (2025-26)",
+                    companies: 14, offers: 9, students: 9, avg: "14.70 LPA", max: "21.00 LPA"
+                }
+            ],
+            full: [
+                { name: "Software Engineering (2024-25)", companies: 13, offers: 10, students: 10, avg: "15.18 LPA", max: "23.00 LPA" },
+                { name: "Software Engineering (2023-24)", companies: 13, offers: 8, students: 8, avg: "7.95 LPA", max: "12.00 LPA" },
+                { name: "Software Engineering (2022-23)", companies: 14, offers: 11, students: 11, avg: "10.00 LPA", max: "26.25 LPA" },
+                { name: "Software Engineering (2021-22)", companies: 14, offers: 13, students: 13, avg: "9.10 LPA", max: "25.00 LPA" },
+
+                { name: "Information Technology (2024-25)", companies: 14, offers: 9, students: 9, avg: "14.70 LPA", max: "21.00 LPA" },
+                { name: "Information Technology (2023-24)", companies: 14, offers: 10, students: 10, avg: "5.65 LPA", max: "10.00 LPA" },
+                { name: "Information Technology (2022-23)", companies: 14, offers: 7, students: 7, avg: "11.00 LPA", max: "19.00 LPA" },
+                { name: "Information Technology (2021-22)", companies: 14, offers: 14, students: 14, avg: "10.95 LPA", max: "28.00 LPA" }
+            ]
+        }
+    },
+'ee': {
+        name: "Electrical and Electronics Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electrical and Electronics Engineering (2025-26)",
+                companies: 31, offers: 40, students: 36,
+                avg: "12.45 LPA", max: "30.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 33, offers: 49, students: 43, avg: "10.26 LPA", max: "25.72 LPA" },
+                { name: "2023-24", companies: 33, offers: 47, students: 44, avg: "8.83 LPA", max: "22.00 LPA" },
+                { name: "2021-22", companies: 43, offers: 56, students: 49, avg: "10.24 LPA", max: "21.16 LPA" },
+                { name: "2020-21", companies: 41, offers: 55, students: 50, avg: "10.49 LPA", max: "25.24 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: {
+                name: "M.Tech. Power Electronics (2025-26)",
+                companies: 8, offers: 6, students: 6,
+                avg: "6.83 LPA", max: "10.00 LPA"
+            },
+            full: [
+                { name: "2023-24", companies: 14, offers: 11, students: 11, avg: "6.68 LPA", max: "18.00 LPA" },
+                { name: "2021-22", companies: 13, offers: 12, students: 12, avg: "6.17 LPA", max: "9.00 LPA" },
+                { name: "2020-21", companies: 17, offers: 17, students: 17, avg: "6.55 LPA", max: "16.00 LPA" }
+            ]
+        }
+    },
+'mca': {
+        name: "Master of Computer Applications",
+        pg: {
+            ongoing: {
+                name: "Master of Computer Applications (2025-26)",
+                companies: 3, offers: 21, students: 22,
+                avg: "4.00 LPA", max: "11.59 LPA"
+            },
+            full: [
+                { name: "2025-26 (Timeline)", companies: 24, offers: 62, students: 59, avg: "9.00 LPA", max: "20.00 LPA" },
+                { name: "2024-25", companies: 35, offers: 80, students: 80, avg: "8.94 LPA", max: "20.00 LPA" },
+                { name: "2023-24", companies: 52, offers: 132, students: 95, avg: "8.29 LPA", max: "25.00 LPA" },
+                { name: "2021-22", companies: 56, offers: 146, students: 102, avg: "10.00 LPA", max: "28.00 LPA" },
+                { name: "2020-21", companies: 85, offers: 274, students: 210, avg: "7.50 LPA", max: "20.00 LPA" }
+            ]
+        }
+    },
+'me': {
+        name: "Mechanical Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Mechanical Engineering (2025-26)",
+                companies: 39, offers: 86, students: 80,
+                avg: "9.22 LPA", max: "18.33 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 44, offers: 88, students: 82, avg: "8.21 LPA", max: "18.33 LPA" },
+                { name: "2023-24", companies: 46, offers: 78, students: 70, avg: "9.07 LPA", max: "18.00 LPA" },
+                { name: "2022-23", companies: 60, offers: 113, students: 85, avg: "8.35 LPA", max: "16.00 LPA" },
+                { name: "2021-22", companies: 45, offers: 112, students: 69, avg: "9.05 LPA", max: "18.00 LPA" }
+            ]
+        },
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. Product Design And Manufacturing (2025-26)",
+                    companies: 6, offers: 8, students: 8, avg: "7.09 LPA", max: "14.00 LPA"
+                },
+                {
+                    name: "M.Tech. Machine Design (2025-26)",
+                    companies: 8, offers: 7, students: 7, avg: "6.02 LPA", max: "8.00 LPA"
+                }
+            ],
+            full: [
+                { name: "Product Design & Manufacturing (2024-25)", companies: 6, offers: 8, students: 8, avg: "7.09 LPA", max: "14.00 LPA" },
+                { name: "Product Design & Manufacturing (2022-23)", companies: 12, offers: 23, students: 23, avg: "6.82 LPA", max: "10.00 LPA" },
+                { name: "Product Design & Manufacturing (2021-22)", companies: 14, offers: 20, students: 20, avg: "6.45 LPA", max: "12.00 LPA" },
+
+                { name: "Machine Design (2024-25)", companies: 8, offers: 7, students: 7, avg: "6.02 LPA", max: "8.00 LPA" },
+                { name: "Machine Design (2022-23)", companies: 10, offers: 17, students: 17, avg: "6.44 LPA", max: "20.00 LPA" },
+                { name: "Machine Design (2021-22)", companies: 12, offers: 15, students: 15, avg: "5.83 LPA", max: "12.00 LPA" }
+            ]
+        }
+    },
+'im': {
+        name: "Industrial Engineering and Management",
+        ug: {
+            ongoing: {
+                name: "B.E. Industrial Engineering and Management (2025-26)",
+                companies: 12, offers: 30, students: 27,
+                avg: "12.46 LPA", max: "21.45 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 30, offers: 51, students: 46, avg: "7.68 LPA", max: "21.45 LPA" },
+                { name: "2023-24", companies: 30, offers: 53, students: 51, avg: "8.39 LPA", max: "20.00 LPA" },
+                { name: "2022-23", companies: 35, offers: 49, students: 49, avg: "9.06 LPA", max: "18.99 LPA" },
+                { name: "2021-22", companies: 38, offers: 66, students: 42, avg: "9.03 LPA", max: "14.95 LPA" }
+            ]
+        }
+    },
+'et': {
+        name: "Electronics And Telecommunication Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electronics And Telecommunication Engineering (2025-26)",
+                companies: 300, offers: 61, students: 47,
+                avg: "11.128 LPA", max: "50.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 41, offers: 53, students: 49, avg: "9.67 LPA", max: "39.00 LPA" },
+                { name: "2023-24", companies: "N/A", offers: 45, students: 60, avg: "75% Placed", max: "12 Higher Studies" },
+                { name: "2022-23", companies: "N/A", offers: 39, students: 64, avg: "61% Placed", max: "0 Higher Studies" },
+                { name: "2021-22", companies: "N/A", offers: 48, students: 60, avg: "80% Placed", max: "0 Higher Studies" },
+                { name: "2020-21", companies: "N/A", offers: 47, students: 54, avg: "87% Placed", max: "1 Higher Studies" }
+            ]
+        },
+        pg: {
+            ongoing: {
+                name: "M.Tech. Digital Communication Engineering (2025-26)",
+                companies: 1, offers: 1, students: 1,
+                avg: "15.00 LPA", max: "15.00 LPA"
+            },
+            full: [
+                { name: "2024-25*", companies: 1, offers: 1, students: 1, avg: "15.00 LPA", max: "15.00 LPA" },
+                { name: "2023-24", companies: 12, offers: 8, students: 8, avg: "7.50 LPA", max: "10.00 LPA" },
+                { name: "2021-22", companies: 12, offers: 11, students: 11, avg: "7.09 LPA", max: "18.60 LPA" },
+                { name: "2020-21", companies: 16, offers: 22, students: 22, avg: "8.22 LPA", max: "21.50 LPA" }
+            ]
+        }
+    }
 };
 
 // Human-readable labels for suggestion buttons
