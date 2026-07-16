@@ -1415,8 +1415,29 @@ function sanitize(input) {
     // 1. Remove dots explicitly to handle c.s.e -> cse
     let cleaned = input.replace(/\./g, '');
     // 2. Remove other special chars but keep underscores
-    cleaned = cleaned.replace(/[^a-zA-Z0-9_\s]/g, ' ');
-    // 3. Remove extra spaces
+    cleaned = cleaned.replace(/[^a-zA-Z0-9_\s]/g, ' ').toLowerCase();
+    
+    // 3. Expand common department abbreviations
+    const deptAbbr = {
+        'cs': 'computer science', 'cse': 'computer science',
+        'ec': 'electronics', 'ece': 'electronics',
+        'me': 'mechanical', 'mech': 'mechanical',
+        'cv': 'civil',
+        'ee': 'electrical', 'eee': 'electrical',
+        'is': 'information science', 'ise': 'information science',
+        'ae': 'aerospace', 'aero': 'aerospace',
+        'ch': 'chemical', 'chem': 'chemical',
+        'bt': 'biotech', 'biotech': 'biotechnology',
+        'im': 'industrial', 'iem': 'industrial',
+        'ei': 'instrumentation', 'eie': 'instrumentation',
+        'et': 'telecommunication', 'ete': 'telecommunication',
+        'aiml': 'artificial intelligence'
+    };
+    
+    // Replace whole words
+    cleaned = cleaned.split(/\s+/).map(w => deptAbbr[w] || w).join(' ');
+
+    // 4. Remove extra spaces
     return cleaned.replace(/\s+/g, ' ').trim();
 }
 
@@ -2174,6 +2195,13 @@ const ABBR = {
 function classifyIntent(input) {
     let cleanInput = sanitize(input).toLowerCase();
 
+    // Extract requested year if any (e.g., 2024, 2023)
+    let extractedYear = null;
+    const yearMatch = cleanInput.match(/\b20\d{2}\b/);
+    if (yearMatch) {
+        extractedYear = yearMatch[0];
+    }
+
     // Context Memory: Implicitly inject department if requested contextually
     const contextualTopics = ['placement', 'hod', 'faculty', 'labs', 'syllabus', 'research'];
     let strippedInput = cleanInput;
@@ -2191,13 +2219,13 @@ function classifyIntent(input) {
     strippedInput = cleanInput.split(' ').filter(w => !stopWords.includes(w)).join(' ');
 
     // 0. Abbreviation Check
-    if (ABBR[cleanInput]) return { type: 'fuzzy', id: null, suggestions: [ABBR[cleanInput]] };
+    if (ABBR[cleanInput]) return { type: 'fuzzy', id: null, year: extractedYear, suggestions: [ABBR[cleanInput]]  };
 
     // 0.5 Context-aware multi-turn handling
     const contextIntents = ['_more','_back','_what_else','_yes','_no'];
     for (const q of QA) {
         if (contextIntents.includes(q.id) && q.k.includes(cleanInput)) {
-            return { type: 'context', id: q.id, suggestions: [] };
+            return { type: 'context', id: q.id, year: extractedYear, suggestions: []  };
         }
     }
     
@@ -2206,10 +2234,10 @@ function classifyIntent(input) {
         if (sanitize(label).toLowerCase() === cleanInput) return { type: 'exact', id, suggestions: [] };
     }
     for (const d of KB.departments.ug) {
-        if (sanitize(d.n).toLowerCase() === cleanInput) return { type: 'exact', id: 'dept_' + d.c, suggestions: [] };
+        if (sanitize(d.n).toLowerCase() === cleanInput) return { type: 'exact', id: 'dept_' + d.c, year: extractedYear, suggestions: []  };
     }
     for (const d of KB.departments.pg) {
-        if (sanitize(d.n).toLowerCase() === cleanInput) return { type: 'exact', id: 'dept_' + d.c, suggestions: [] };
+        if (sanitize(d.n).toLowerCase() === cleanInput) return { type: 'exact', id: 'dept_' + d.c, year: extractedYear, suggestions: []  };
     }
     const BUTTON_MAP = {
         'ug be': 'ugAdm', 'pg mtech': 'pgAdm', 'mca': 'mca', 'phd': 'phd',
@@ -2222,11 +2250,11 @@ function classifyIntent(input) {
         'sports info': 'sports', 'rvei website': 'trust',
         'website': 'website', 'email': 'contact', 'rvce edu in': 'website'
     };
-    if (BUTTON_MAP[cleanInput]) return { type: 'exact', id: BUTTON_MAP[cleanInput], suggestions: [] };
+    if (BUTTON_MAP[cleanInput]) return { type: 'exact', id: BUTTON_MAP[cleanInput], year: extractedYear, suggestions: []  };
 
     // 2. Exact match: user typed EXACTLY a keyword from the QA bank
     for (const q of QA) {
-        if (q.k.includes(cleanInput)) return { type: 'exact', id: q.id, suggestions: [] };
+        if (q.k.includes(cleanInput)) return { type: 'exact', id: q.id, year: extractedYear, suggestions: []  };
     }
 
     // 3. Keyword-in-sentence: a keyword appears as a whole word inside user's input
@@ -2282,7 +2310,7 @@ function classifyIntent(input) {
     // 2.5 Faculty Override (Prioritize specific faculty matches over generic keywords)
     const facultyId = findFacultyMatch(input);
     if (facultyId) {
-        return { type: 'exact', id: facultyId, suggestions: [] };
+        return { type: 'exact', id: facultyId, year: extractedYear, suggestions: []  };
     }
 
     // Composite Intent Resolution: Combine Department + Topic (e.g., CSE + Placements)
@@ -2337,7 +2365,7 @@ function classifyIntent(input) {
                 if (!multiIds.includes('greet')) multiIds.unshift('greet');
             }
             
-            return { type: 'multi', ids: multiIds, overflow: overflowIds, suggestions: [] };
+            return { type: 'multi', ids: multiIds, overflow: overflowIds, year: extractedYear, suggestions: []  };
         }
     }
 
@@ -2345,7 +2373,7 @@ function classifyIntent(input) {
         if (matchedIntents.some(q => q.id === 'greet') && best !== 'greet') {
             return { type: 'multi', ids: ['greet', best], suggestions: [] };
         }
-        return { type: isComposite ? 'exact' : 'keyword', id: best, suggestions: [] };
+        return { type: isComposite ? 'exact' : 'keyword', id: best, year: extractedYear, suggestions: []  };
     }
 
     // 3.5 COE alias matching — check if user query contains any COE alias
@@ -2362,7 +2390,7 @@ function classifyIntent(input) {
                 }
             }
         }
-        if (bestCoe) return { type: 'exact', id: bestCoe, suggestions: [] };
+        if (bestCoe) return { type: 'exact', id: bestCoe, year: extractedYear, suggestions: []  };
     }
 
     // 4. Ultra-Aggressive Faculty Search (Move to secondary fallback)
@@ -2386,19 +2414,19 @@ function classifyIntent(input) {
             if (facultyMatches.length === 1) {
                 const fac = facultyMatches[0].f;
                 const finalId = `fac_${fac.n.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
-                return { type: 'exact', id: finalId, suggestions: [] };
+                return { type: 'exact', id: finalId, year: extractedYear, suggestions: []  };
             } else if (facultyMatches.length > 1) {
-                return { type: 'fac_multi', matches: facultyMatches, suggestions: [] };
+                return { type: 'fac_multi', matches: facultyMatches, year: extractedYear, suggestions: [] };
             }
         }
     }
 
     // 5. Fuzzy match: no exact keyword found, try "Did you mean?" suggestions
     const suggestions = findSuggestions(input);
-    if (suggestions.length > 0) return { type: 'fuzzy', id: null, suggestions };
+    if (suggestions.length > 0) return { type: 'fuzzy', id: null, year: extractedYear, suggestions };
 
     // 5. No match at all
-    return { type: null, id: null, suggestions: [] };
+    return { type: null, id: null, year: extractedYear, suggestions: []  };
 }
 
 // Legacy wrapper for tests and button clicks (returns just the ID)
