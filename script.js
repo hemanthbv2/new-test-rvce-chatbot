@@ -948,6 +948,36 @@ const KB = {
             ]
         }
     },
+    'et': {
+        name: "Electronics And Telecommunication Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Electronics And Telecommunication Engineering (2025-26)",
+                companies: 300, offers: 61, students: 47,
+                avg: "11.128 LPA", max: "50.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 41, offers: 53, students: 49, avg: "9.67 LPA", max: "39.00 LPA" },
+                { name: "2023-24", companies: "N/A", offers: 45, students: 60, avg: "75% Placed", max: "12 Higher Studies" },
+                { name: "2022-23", companies: "N/A", offers: 39, students: 64, avg: "61% Placed", max: "0 Higher Studies" },
+                { name: "2021-22", companies: "N/A", offers: 48, students: 60, avg: "80% Placed", max: "0 Higher Studies" },
+                { name: "2020-21", companies: "N/A", offers: 47, students: 54, avg: "87% Placed", max: "1 Higher Studies" }
+            ]
+        },
+        pg: {
+            ongoing: {
+                name: "M.Tech. Digital Communication Engineering (2025-26)",
+                companies: 1, offers: 1, students: 1,
+                avg: "15.00 LPA", max: "15.00 LPA"
+            },
+            full: [
+                { name: "2024-25*", companies: 1, offers: 1, students: 1, avg: "15.00 LPA", max: "15.00 LPA" },
+                { name: "2023-24", companies: 12, offers: 8, students: 8, avg: "7.50 LPA", max: "10.00 LPA" },
+                { name: "2021-22", companies: 12, offers: 11, students: 11, avg: "7.09 LPA", max: "18.60 LPA" },
+                { name: "2020-21", companies: 16, offers: 22, students: 22, avg: "8.22 LPA", max: "21.50 LPA" }
+            ]
+        }
+    },
     career_options: {
         'cs': {
             "B.E. - Computer Science & Engineering": [
