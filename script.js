@@ -966,19 +966,34 @@ const KB = {
         ]
     },
         'bt': {
-            "B.E. - Biotechnology": [
-                "Biotech Research Associate", "Clinical Research Associate", "Biomedical Engineer",
-                "Bioprocess Engineer", "Quality Control/Quality Assurance Analyst",
-                "Bioinformatics Analyst", "Product Specialist in Biotech or Pharma Industry",
-                "Regulatory Affairs Executive"
-            ],
-            "M.Tech - Biotechnology": [
-                "Bioprocess Engineer", "R&D Scientist (Biopharma or Healthcare)",
-                "Bioinformatics Analyst", "Research Scientist (Biotech/Pharma/Agri-tech)",
-                "Teaching Faculty/Academic Researcher", "Patent Analyst/IP Consultant",
-                "Clinical Research Manager", "Regulatory Affairs Specialist"
+        name: "Biotechnology",
+        ug: {
+            ongoing: {
+                name: "B.E. in Biotechnology (2025-26)",
+                companies: 5, offers: 8, students: 8,
+                avg: "9.28 LPA", max: "14.81 LPA"
+            },
+            full: [
+                { name: "2021-25", companies: 21, offers: 27, students: 27, avg: "4.75 LPA", max: "14.81 LPA" },
+                { name: "2020-24", companies: "-", offers: 40, students: 40, avg: "5.49 LPA", max: "12.00 LPA" },
+                { name: "2019-23", companies: "-", offers: 30, students: 30, avg: "5.42 LPA", max: "11.60 LPA" },
+                { name: "2018-22", companies: "-", offers: 21, students: 21, avg: "5.42 LPA", max: "16.00 LPA" }
             ]
         },
+        pg: {
+            ongoing: {
+                name: "M.Tech. in Biotechnology (2025-26)",
+                companies: 6, offers: 14, students: 14,
+                avg: "4.30 LPA", max: "5.50 LPA"
+            },
+            full: [
+                { name: "2022-24", companies: "-", offers: 8, students: 8, avg: "3.35 LPA", max: "5.80 LPA" },
+                { name: "2021-23", companies: "-", offers: 14, students: 14, avg: "3.80 LPA", max: "6.21 LPA" },
+                { name: "2020-22", companies: "-", offers: 11, students: 11, avg: "3.50 LPA", max: "4.20 LPA" },
+                { name: "2019-21", companies: "-", offers: 9, students: 9, avg: "3.00 LPA", max: "3.80 LPA" }
+            ]
+        }
+    },
         'ch': {
             "B.E. - Chemical Engineering": [
                 "Academic & Research Professional", "Data & AI Engineer", "Energy Engineer",
@@ -3352,24 +3367,30 @@ function getResponse(id) {
 
         // Handle Full Stats for departments
         if (id && id.startsWith('plcmt_full_')) {
-            const c = id.replace('plcmt_full_', '');
-            let depCode = c;
-            if (c.endsWith('_ug')) depCode = c.replace('_ug', '');
-            else if (c.endsWith('_pg')) depCode = c.replace('_pg', '');
+            const originalId = id.replace('plcmt_full_', '');
+            let c = originalId;
+            let isUG = false, isPG = false;
+            if (c.endsWith('_ug')) { isUG = true; c = c.replace('_ug', ''); }
+            else if (c.endsWith('_pg')) { isPG = true; c = c.replace('_pg', ''); }
             
-            const stats = KB.placement_stats[depCode];
-            if (stats && stats.full) {
-                r.text += T(`Here are the full year-wise placement statistics for **${stats.name}**: 📊\n\n`, `Full Year-wise Placement Statistics for ${stats.name}:\n\n`);
-                stats.full.forEach(prog => {
-                    r.text += `**${prog.name}**\n`;
-                    r.text += `  **Number of companies visited:** ${prog.companies}\n`;
-                    r.text += `  **Number of offers made:** ${prog.offers}\n`;
-                    r.text += `  **Number of students selected:** ${prog.students}\n`;
-                    r.text += `  **Average Salary:** ${prog.avg}\n`;
-                    r.text += `  **Maximum salary:** ${prog.max}\n\n`;
-                });
-                r.buttons = [{l: 'Back', a: `plcmt_${c}`, i: '🔙'}];
-                return r;
+            let stats = KB.placement_stats[c];
+            if (stats) {
+                if (isUG && stats.ug) stats = stats.ug;
+                else if (isPG && stats.pg) stats = stats.pg;
+                
+                if (stats.full) {
+                    r.text += T(`Here are the full year-wise placement statistics for **${stats.name || KB.departments[isPG ? 'pg' : 'ug'].find(x=>x.c===c)?.n}**: 📊\n\n`, `Full Year-wise Placement Statistics:\n\n`);
+                    stats.full.forEach(prog => {
+                        r.text += `**${prog.name}**\n`;
+                        r.text += `  **Number of companies visited:** ${prog.companies}\n`;
+                        r.text += `  **Number of offers made:** ${prog.offers}\n`;
+                        r.text += `  **Number of students selected:** ${prog.students}\n`;
+                        r.text += `  **Average Salary:** ${prog.avg}\n`;
+                        r.text += `  **Maximum salary:** ${prog.max}\n\n`;
+                    });
+                    r.buttons = [{l: 'Back', a: `plcmt_${originalId}`, i: '🔙'}];
+                    return r;
+                }
             }
         }
 
@@ -3382,10 +3403,14 @@ function getResponse(id) {
             else if (c.endsWith('_pg')) { isPG = true; c = c.replace('_pg', ''); }
 
             const d = KB.departments.ug.find(x=>x.c===c) || KB.departments.pg.find(x=>x.c===c);
-            const stats = KB.placement_stats[c];
+            let rawStats = KB.placement_stats[c];
             
             if (d) {
-                if (stats) {
+                if (rawStats) {
+                    let stats = rawStats;
+                    if (isUG && stats.ug) stats = stats.ug;
+                    else if (isPG && stats.pg) stats = stats.pg;
+
                     r.text += T(`Here are the placement highlights for **${d.n}**: 🚀\n\n`, `Detailed Placement Statistics for ${d.n}:\n\n`);
                     
                     // Check if they use the new structured format
