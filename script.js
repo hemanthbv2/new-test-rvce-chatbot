@@ -949,6 +949,15 @@ const KB = {
             companies: 18, offers: 30, students: 30,
             avg: "8.12 LPA", max: "11.00 LPA"
         },
+        'aiml': {
+        name: "AI & Machine Learning",
+        ongoing: {
+            name: "B.E. AI & Machine Learning (2025-26)",
+            companies: 47, offers: 63, students: 54,
+            avg: "17.29 LPA", max: "53.00 LPA"
+        },
+        full: []
+    },
         full: [
             { name: "2024-25", companies: 18, offers: 33, students: 28, avg: "7.02 LPA", max: "13.50 LPA" },
             { name: "2023-24", companies: 23, offers: 38, students: 33, avg: "6.83 LPA", max: "10.00 LPA" },
