@@ -995,6 +995,22 @@ const KB = {
         }
     },
         'ch': {
+        name: "Chemical Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Chemical Engineering (2025-26)",
+                companies: 10, offers: 21, students: 18,
+                avg: "9.44 LPA", max: "18.33 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 23, offers: 28, students: 28, avg: "6.69 LPA", max: "14.63 LPA" },
+                { name: "2023-24", companies: 20, offers: 25, students: 25, avg: "6.78 LPA", max: "15.70 LPA" },
+                { name: "2022-23", companies: 23, offers: 26, students: 21, avg: "7.70 LPA", max: "13.95 LPA" },
+                { name: "2021-22", companies: 27, offers: 31, students: 26, avg: "7.14 LPA", max: "12.90 LPA" }
+            ]
+        }
+    },
+        'ch': {
             "B.E. - Chemical Engineering": [
                 "Academic & Research Professional", "Data & AI Engineer", "Energy Engineer",
                 "Design & Simulation Expert", "Consultant", "Pharmaceutical Engineer",
