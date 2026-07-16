@@ -915,28 +915,44 @@ const KB = {
             ]
         },
         'is': {
-            "B.E. - Information Science & Engineering": [
-                "AI/ML Engineer", "Cloud Solutions Architect", "DevOps Engineer",
-                "Full Stack Developer", "IoT Solutions Developer", "Software Engineer",
-                "Systems Analyst", "Data Scientist"
+        name: "Information Science and Engineering",
+        ug: {
+            ongoing: {
+                name: "B.E. Information Science and Engineering (2025-26)",
+                companies: 43, offers: 67, students: 57,
+                avg: "19.11 LPA", max: "67.00 LPA"
+            },
+            full: [
+                { name: "2024-25", companies: 55, offers: 71, students: 62, avg: "15.41 LPA", max: "67.00 LPA" },
+                { name: "2023-24", companies: 51, offers: 61, students: 55, avg: "16.37 LPA", max: "92.00 LPA" },
+                { name: "2022-23", companies: 63, offers: 73, students: 60, avg: "14.12 LPA", max: "62.00 LPA" },
+                { name: "2021-22", companies: 67, offers: 74, students: 56, avg: "14.12 LPA", max: "32.50 LPA" }
             ]
         },
-        'aiml': {
-            "B.E. - AI & Machine Learning": [
-                "Machine Learning Engineer", "Data Scientist", "Computer Vision Engineer",
-                "AI Research Associate", "Business Intelligence Analyst", "Data Engineer",
-                "NLP Engineer", "AI/ML Software Developer", "AI Consultant",
-                "Research and Development (R&D) Engineer"
+        pg: {
+            ongoing: [
+                {
+                    name: "M.Tech. Software Engineering (2025-26)",
+                    companies: 13, offers: 10, students: 10, avg: "15.18 LPA", max: "23.00 LPA"
+                },
+                {
+                    name: "M.Tech. Information Technology (2025-26)",
+                    companies: 14, offers: 9, students: 9, avg: "14.70 LPA", max: "21.00 LPA"
+                }
+            ],
+            full: [
+                { name: "Software Engineering (2024-25)", companies: 13, offers: 10, students: 10, avg: "15.18 LPA", max: "23.00 LPA" },
+                { name: "Software Engineering (2023-24)", companies: 13, offers: 8, students: 8, avg: "7.95 LPA", max: "12.00 LPA" },
+                { name: "Software Engineering (2022-23)", companies: 14, offers: 11, students: 11, avg: "10.00 LPA", max: "26.25 LPA" },
+                { name: "Software Engineering (2021-22)", companies: 14, offers: 13, students: 13, avg: "9.10 LPA", max: "25.00 LPA" },
+
+                { name: "Information Technology (2024-25)", companies: 14, offers: 9, students: 9, avg: "14.70 LPA", max: "21.00 LPA" },
+                { name: "Information Technology (2023-24)", companies: 14, offers: 10, students: 10, avg: "5.65 LPA", max: "10.00 LPA" },
+                { name: "Information Technology (2022-23)", companies: 14, offers: 7, students: 7, avg: "11.00 LPA", max: "19.00 LPA" },
+                { name: "Information Technology (2021-22)", companies: 14, offers: 14, students: 14, avg: "10.95 LPA", max: "28.00 LPA" }
             ]
-        },
-        'csaiml': {
-            "B.E. - CSE (AI & ML)": [
-                "Machine Learning Engineer", "Data Scientist", "Computer Vision Engineer",
-                "AI Research Associate", "Business Intelligence Analyst", "Data Engineer",
-                "NLP Engineer", "AI/ML Software Developer", "AI Consultant",
-                "Research and Development (R&D) Engineer"
-            ]
-        },
+        }
+    },
         'ec': {
         name: "Electronics & Communication Engineering",
         ug: {
