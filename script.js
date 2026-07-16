@@ -1609,6 +1609,8 @@ const QA = [
     {k:['instrumentation','eie','ei','ei department','eie department','instr','instru','ei branch','eie branch'],id:'dept_ei',p:1},
     {k:['industrial engineering','iem','ie','iem department','industrial management','ie branch','iem branch','industrial'],id:'dept_im',p:1},
     // P2: Mid-level
+    {k:['2024 placement','2024 placements','placement 2024','placements 2024','placement stats 2024','2024 stats','2024'],id:'placements2024',p:0.1},
+    {k:['2027 placement','2027 placements','placement 2027','placements 2027','placement stats 2027','2028 placement','2028 placements','2029 placement','2027 stats','2027'],id:'placements_future',p:0.1},
     {k:['placement','placements','placed','salary','package','lpa','ctc','highest package','average salary','recruit','hiring','companies visit','which companies','job','jobs','placement details','plcmnt','plcmnts','campus drive','dream company','mass recruit','superdream','dream offer','placed kya','placement scene','placement stats','on campus placement','off campus placement'],id:'placements',p:0.5},
     {k:['top company','top companies','top recruiter','top recruiters','who recruits','who visits','recruiters','companies'],id:'top_companies',p:0.6},
     {k:['admission','admissions','how to apply','how to join','entrance','eligibility','enroll','apply to rvce','join rvce','get into rvce','admission process','how to get admission','ug adm','pg adm','ug b e','admission kaise','how to get in','want to join','joining process'],id:'admissions',p:1.5},
@@ -2645,6 +2647,14 @@ function getResponse(id) {
             {l:'X (Twitter)',u:KB.contact.social.x,i:'🐦'},
             {l:'Contact Details',a:'contact',i:'📞'}
         ]; break;
+    case 'placements2024':
+        r.text += T("Here are the placement statistics for the 2024 batch: 📊", "Placement Statistics (2024 Batch):");
+        r.text += "\n• Highest Package: " + KB.placements2024.maxSalary + "\n• " + KB.placements2024.companies + "\n• " + KB.placements2024.offers;
+        r.buttons = [{l:'2026 Placements',a:'placements',i:'💼'}, {l:'Department-wise Stats',a:'dept_placements_list',i:'📊'}]; break;
+    case 'placements_future':
+        r.text += T("Placement statistics for the 2027 batch (and beyond) are not yet available as the placement drives for these batches have not concluded. 📊", "Future Placement Statistics:");
+        r.text += "\n• Currently, we have the ongoing 2026 placement data and the finalized 2025 data available.";
+        r.buttons = [{l:'2026 Placements',a:'placements',i:'💼'}, {l:'Department-wise Stats',a:'dept_placements_list',i:'📊'}]; break;
     case 'placements':
         r.text += T("Our record is legendary! 📊 For the 2026 batch, the drive is ongoing with fantastic results!","Placement Statistics (2026 Batch - Ongoing):");
         r.text += "\n• Max: " + KB.placements.maxSalary + "\n• Avg: " + KB.placements.avgSalary + "\n• " + KB.placements.offers + "\n• " + KB.placements.companies + "\n• Top Recruiters: " + KB.placements.recruiters;
@@ -2887,8 +2897,9 @@ function getResponse(id) {
     case 'wifi':
         r.text += T("Yes! Wi-Fi everywhere! 📶 Campus + Hostels!","Wi-Fi is available across the campus and in hostel blocks."); break;
     case 'food':
-        r.text += T("Hungry? 🍛 RVCE has multiple food spots! **"+KB.general.foodCourt.name+"** is the biggest! 😋",
+        r.text += T("Hungry? 🍛 RVCE has multiple food spots! The food served is highly nutritious, tasty, and strictly vegetarian. **"+KB.general.foodCourt.name+"** is the biggest! 😋",
             "### 🍽️ Dining at RVCE\n\n" +
+            "The food served is highly nutritious, tasty, and strictly vegetarian.\n\n" +
             "**1. Campus Food Courts:**\n" +
             "• **Main Food Court (Cafe Mingos):** " + KB.general.foodCourt.features + ".\n" +
             "• **Mini Canteen & Extension:** Located near departments for quick snacks and easier access.\n" +
@@ -2898,8 +2909,9 @@ function getResponse(id) {
             "• Serves: " + KB.hostelDetails.messDetails.meals + ".");
         r.buttons = [{l:'Campus Facilities',a:'facilities',i:'🏢'}, {l:'Mess Details',a:'mess',i:'🍲'}]; break;
     case 'mess':
-        r.text += T("The hostel mess serves strictly vegetarian food to keep you fueled! 🍲",
+        r.text += T("The hostel mess serves strictly vegetarian food that is nutritious and tasty to keep you fueled! 🍲\n\nWe have messes across different hostels like: " + KB.hostelDetails.messDetails.messes.join(", ") + ".",
             "### 🏠 Hostel Mess Information\n\n" +
+            "• **Food Quality:** The food served is highly nutritious, tasty, and strictly vegetarian.\n" +
             "• **Messes:** " + KB.hostelDetails.messDetails.messes.join(", ") + "\n" +
             "• **Cuisine:** " + KB.hostelDetails.messDetails.type + "\n" +
             "• **Meals:** " + KB.hostelDetails.messDetails.meals + "\n" +
