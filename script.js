@@ -943,12 +943,19 @@ const KB = {
             ]
         },
         'ae': {
-            "B.E. - Aerospace Engineering": [
-                "Aircraft Design Engineer", "Systems Integration Engineer", "Spacecraft Design Engineer",
-                "Aerodynamics Engineer", "Flight Test Engineer", "Satellite Systems Engineer",
-                "Propulsion Engineer", "Aerospace Structures Analyst"
-            ]
+        name: "Aerospace Engineering",
+        ongoing: {
+            name: "B.E. Aerospace Engineering (2025-26)",
+            companies: 18, offers: 30, students: 30,
+            avg: "8.12 LPA", max: "11.00 LPA"
         },
+        full: [
+            { name: "2024-25", companies: 18, offers: 33, students: 28, avg: "7.02 LPA", max: "13.50 LPA" },
+            { name: "2023-24", companies: 23, offers: 38, students: 33, avg: "6.83 LPA", max: "10.00 LPA" },
+            { name: "2022-23", companies: 27, offers: 40, students: 33, avg: "7.60 LPA", max: "13.00 LPA" },
+            { name: "2021-22", companies: 35, offers: 48, students: 44, avg: "7.83 LPA", max: "15.00 LPA" }
+        ]
+    },
         'bt': {
             "B.E. - Biotechnology": [
                 "Biotech Research Associate", "Clinical Research Associate", "Biomedical Engineer",
@@ -3334,16 +3341,61 @@ function getResponse(id) {
             }
         }
 
+        // Handle Full Stats for departments
+        if (id && id.startsWith('plcmt_full_')) {
+            const c = id.replace('plcmt_full_', '');
+            let depCode = c;
+            if (c.endsWith('_ug')) depCode = c.replace('_ug', '');
+            else if (c.endsWith('_pg')) depCode = c.replace('_pg', '');
+            
+            const stats = KB.placement_stats[depCode];
+            if (stats && stats.full) {
+                r.text += T(`Here are the full year-wise placement statistics for **${stats.name}**: 📊\n\n`, `Full Year-wise Placement Statistics for ${stats.name}:\n\n`);
+                stats.full.forEach(prog => {
+                    r.text += `**${prog.name}**\n`;
+                    r.text += `  **Number of companies visited:** ${prog.companies}\n`;
+                    r.text += `  **Number of offers made:** ${prog.offers}\n`;
+                    r.text += `  **Number of students selected:** ${prog.students}\n`;
+                    r.text += `  **Average Salary:** ${prog.avg}\n`;
+                    r.text += `  **Maximum salary:** ${prog.max}\n\n`;
+                });
+                r.buttons = [{l: 'Back', a: `plcmt_${c}`, i: '🔙'}];
+                return r;
+            }
+        }
+
         // Handle Department Placement requests
         if (id && id.startsWith('plcmt_')) {
-            const c = id.replace('plcmt_','');
+            const originalId = id.replace('plcmt_','');
+            let c = originalId;
+            let isUG = false, isPG = false;
+            if (c.endsWith('_ug')) { isUG = true; c = c.replace('_ug', ''); }
+            else if (c.endsWith('_pg')) { isPG = true; c = c.replace('_pg', ''); }
+
             const d = KB.departments.ug.find(x=>x.c===c) || KB.departments.pg.find(x=>x.c===c);
             const stats = KB.placement_stats[c];
+            
             if (d) {
                 if (stats) {
                     r.text += T(`Here are the placement highlights for **${d.n}**: 🚀\n\n`, `Detailed Placement Statistics for ${d.n}:\n\n`);
                     
-                    if (stats.programs) {
+                    // Check if they use the new structured format
+                    if (stats.ongoing) {
+                        const prog = stats.ongoing;
+                        r.text += `**${prog.name}**\n`;
+                        r.text += `• **Number of companies visited:** ${prog.companies}\n`;
+                        r.text += `• **Number of offers made:** ${prog.offers}\n`;
+                        r.text += `• **Number of students selected:** ${prog.students}\n`;
+                        r.text += `• **Average Salary:** ${prog.avg}\n`;
+                        r.text += `• **Maximum salary:** ${prog.max}\n\n`;
+                        
+                        r.buttons = [];
+                        if (stats.full && stats.full.length > 0) {
+                            r.buttons.push({l: 'View Full Year-wise Stats 📊', a: `plcmt_full_${originalId}`, i: '📅'});
+                        }
+                    } 
+                    // Fallback to legacy flat programs array
+                    else if (stats.programs) {
                         stats.programs.forEach(prog => {
                             r.text += `**${prog.name}**\n`;
                             r.text += `• **Number of companies visited:** ${prog.companies}\n`;
@@ -3352,19 +3404,22 @@ function getResponse(id) {
                             r.text += `• **Average Salary:** ${prog.avg}\n`;
                             r.text += `• **Maximum salary:** ${prog.max}\n\n`;
                         });
+                        r.buttons = [];
                     } else {
                         r.text += `• **Number of companies visited:** ${stats.companies}\n`;
                         r.text += `• **Number of offers made:** ${stats.offers}\n`;
                         r.text += `• **Number of students selected:** ${stats.students}\n`;
                         r.text += `• **Average Salary:** ${stats.avg}\n`;
                         r.text += `• **Maximum salary:** ${stats.max}\n`;
+                        r.buttons = [];
                     }
+                    
                     r.text += `\n**Top Recruiting Companies across RVCE:**\n${KB.placements.recruiters}\n`;
-                    r.buttons = [];
+                    
                     if (d.placement) {
                         r.buttons.push({l: 'Official Portal', u: d.placement, i: '🌐'});
                     }
-                    r.buttons.push({l: 'Other Departments', a: 'dept_placements_list', i: '📋'}, {l: 'General Placements', a: 'placements', i: '💼'});
+                    r.buttons.push({l: 'Other Departments', a: isPG ? 'plcmt_pg_categories' : (isUG ? 'plcmt_ug_categories' : 'dept_placements_list'), i: '📋'}, {l: 'General Placements', a: 'placements', i: '💼'});
                 } else if (d.placement) {
                     r.text += T(`The **${d.n}** department has an excellent placement record! 💼\n\nYou can view the latest statistics, top recruiters, and placement highlights for this branch here:`, `Detailed Placement Information for ${d.n}:`);
                     r.buttons = [{l: d.n + ' Placements', u: d.placement, i: '📈'}, {l: 'General Placements', a: 'placements', i: '💼'}];
