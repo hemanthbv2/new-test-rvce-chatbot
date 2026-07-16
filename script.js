@@ -2122,74 +2122,18 @@ KB.placement_stats = {
             { name: "M.Tech. CNE (2020-21)", companies: "Data unavailable", offers: "Data unavailable", students: "Data unavailable", avg: "Data unavailable", max: "Data unavailable" }
         ]
     },
-    'is': { 
-        programs: [
-            { name: "B.E. Information Science And Engineering", companies: "43", offers: "71", students: "61", avg: "19.11 LPA", max: "67 LPA" },
-            { name: "M.Tech. Software Engineering", companies: "13", offers: "10", students: "10", avg: "15.18 LPA", max: "23 LPA" },
-            { name: "M.Tech. Information Technology", companies: "14", offers: "9", students: "9", avg: "14.70 LPA", max: "21 LPA" }
-        ]
-    },
-    'ec': { 
-        programs: [
-            { name: "B.E. Electronics & Communication Engineering", companies: "65", offers: "137", students: "122", avg: "16.47 LPA", max: "37 LPA" }
-        ]
-    },
-    'me': { 
-        programs: [
-            { name: "B.E. Mechanical Engineering", companies: "39", offers: "86", students: "80", avg: "9.22 LPA", max: "18.33 LPA" },
-            { name: "M.Tech. Product Design & Manufacturing", companies: "6", offers: "8", students: "8", avg: "7.09 LPA", max: "14 LPA" },
-            { name: "M.Tech. Machine Design", companies: "8", offers: "7", students: "7", avg: "6.02 LPA", max: "8 LPA" }
-        ]
-    },
-    'ee': { 
-        programs: [
-            { name: "B.E. Electrical And Electronics Engineering", companies: "31", offers: "40", students: "36", avg: "12.45 LPA", max: "30 LPA" },
-            { name: "M.Tech. In Power Electronics", companies: "8", offers: "6", students: "6", avg: "6.83 LPA", max: "10 LPA" }
-        ]
-    },
-    'cv': { 
-        programs: [
-            { name: "B.E. Civil Engineering", companies: "14", offers: "38", students: "35", avg: "7.03 LPA", max: "18.33 LPA" },
-            { name: "M.Tech. Highway Technology", companies: "8", offers: "13", students: "13", avg: "4.05 LPA", max: "7 LPA" }
-        ]
-    },
-    'ch': { 
-        programs: [
-            { name: "B.E. Chemical Engineering", companies: "10", offers: "21", students: "18", avg: "9.94 LPA", max: "18.33 LPA" }
-        ]
-    },
-    'bt': { 
-        programs: [
-            { name: "B.E. Biotechnology", companies: "Data unavailable", offers: "40", students: "40", avg: "5.49 LPA", max: "12 LPA" },
-            { name: "M.Tech. Biotechnology", companies: "Data unavailable", offers: "14", students: "14", avg: "4.30 LPA", max: "5.5 LPA" }
-        ]
-    },
-    'et': { 
-        programs: [
-            { name: "B.E. - ETE", companies: "Data unavailable", offers: "47", students: "47", avg: "15.00 LPA", max: "15 LPA" },
-            { name: "M.Tech. Digital Communication Engineering", companies: "1", offers: "1", students: "1", avg: "15 LPA", max: "15 LPA" }
-        ]
-    },
-    'im': { 
-        programs: [
-            { name: "B.E. Industrial Engineering and Management", companies: "12", offers: "35", students: "31", avg: "12.46 LPA", max: "21.45 LPA" }
-        ]
-    },
-    'ei': { 
-        programs: [
-            { name: "B.E. Electronics And Instrumentation Engineering", companies: "27", offers: "53", students: "46", avg: "11.77 LPA", max: "37 LPA" }
-        ]
-    },
-    'ae': { 
-        programs: [
-            { name: "B.E. Aerospace Engineering", companies: "18", offers: "30", students: "30", avg: "8.12 LPA", max: "11 LPA" }
-        ]
-    },
-    'aiml': { 
-        programs: [
-            { name: "B.E. - AI-ML", companies: "47", offers: "63", students: "54", avg: "17.29 LPA", max: "53 LPA" }
-        ]
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 };
 
 // Human-readable labels for suggestion buttons
