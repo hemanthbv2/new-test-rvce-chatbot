@@ -1419,12 +1419,12 @@ function sanitize(input) {
     
     // 3. Expand common department abbreviations
     const deptAbbr = {
-        'cs': 'computer science', 'cse': 'computer science',
-        'ec': 'electronics', 'ece': 'electronics',
+        'cs': 'cse', 'cse': 'cse',
+        'ec': 'ece', 'ece': 'ece',
         'me': 'mechanical', 'mech': 'mechanical',
         'cv': 'civil',
-        'ee': 'electrical', 'eee': 'electrical',
-        'is': 'information science', 'ise': 'information science',
+        'ee': 'eee', 'eee': 'eee',
+        'is': 'ise', 'ise': 'ise',
         'ae': 'aerospace', 'aero': 'aerospace',
         'ch': 'chemical', 'chem': 'chemical',
         'bt': 'biotech', 'biotech': 'biotechnology',
@@ -2213,8 +2213,12 @@ function classifyIntent(input) {
         // Remove common stop words from dept name
         extractedDept = extractedDept.replace(/\b(engineering|technology|department|dept)\b/gi, '').trim();
         
-        const matched = KB.departments.ug.find(x => x.n.toLowerCase().includes(extractedDept) || x.c === extractedDept) ||
-                        KB.departments.pg.find(x => x.n.toLowerCase().includes(extractedDept) || x.c === extractedDept);
+        const matched = KB.departments.ug.find(x => x.c === extractedDept) ||
+                        KB.departments.pg.find(x => x.c === extractedDept) ||
+                        KB.departments.ug.find(x => x.n.toLowerCase().startsWith(extractedDept)) ||
+                        KB.departments.pg.find(x => x.n.toLowerCase().startsWith(extractedDept)) ||
+                        KB.departments.ug.find(x => x.n.toLowerCase().includes(extractedDept)) ||
+                        KB.departments.pg.find(x => x.n.toLowerCase().includes(extractedDept));
         if (matched) {
             return { type: 'exact', id: 'plcmt_' + matched.c, year: extractedYear, suggestions: [] };
         }
