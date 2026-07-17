@@ -1414,8 +1414,8 @@ const KB = {
 function sanitize(input) {
     // 1. Remove dots explicitly to handle c.s.e -> cse
     let cleaned = input.replace(/\./g, '');
-    // 2. Remove other special chars but keep underscores
-    cleaned = cleaned.replace(/[^a-zA-Z0-9_\s]/g, ' ').toLowerCase();
+    // 2. Remove other special chars but keep underscores and hyphens (vital for years like 2024-25)
+    cleaned = cleaned.replace(/[^a-zA-Z0-9_\-\s]/g, ' ').toLowerCase();
     
     // 3. Expand common department abbreviations
     const deptAbbr = {
@@ -1890,7 +1890,7 @@ KB.placement_stats = {
                 { name: "2024-25", companies: 77, offers: 167, students: 156, avg: "13.40 LPA", max: "44.72 LPA" },
                 { name: "2023-24", companies: 83, offers: 159, students: 152, avg: "11.27 LPA", max: "25.85 LPA" },
                 { name: "2022-23", companies: 92, offers: 171, students: 161, avg: "12.12 LPA", max: "35.50 LPA" },
-                { name: "2021-22", companies: 206, offers: 180, students: 152, avg: "84.00 LPA", max: "84.00 LPA" }
+                { name: "2021-22", companies: 206, offers: 180, students: 152, avg: "8.40 LPA", max: "84.00 LPA" }
             ]
         },
         pg: {
@@ -2197,9 +2197,27 @@ function classifyIntent(input) {
 
     // Extract requested year if any (e.g., 2024, 2023)
     let extractedYear = null;
-    const yearMatch = cleanInput.match(/\b20\d{2}\b/);
-    if (yearMatch) {
-        extractedYear = yearMatch[0];
+    let extractedYears = [];
+    const yearMatches = cleanInput.match(/\b20\d{2}(?:-\d{2})?\b/g);
+    if (yearMatches) {
+        extractedYears = Array.from(new Set(yearMatches));
+        extractedYear = extractedYears.join(' & ');
+    }
+
+    // 0. Placement Regex Override (Detect Year-wise Dept Placements early)
+    let pMatch = /(?:placement stats|placement statistics|placement|placements|highest package|average package|salary)\s+(?:for|in|of)?\s*([a-zA-Z\s\(\)]+)/i.exec(cleanInput);
+    if (!pMatch) pMatch = /([a-zA-Z\s\(\)]+)\s+(?:placement stats|placement statistics|placement|placements|highest package|average package|salary)/i.exec(cleanInput);
+    
+    if (pMatch) {
+        let extractedDept = pMatch[1].trim();
+        // Remove common stop words from dept name
+        extractedDept = extractedDept.replace(/\b(engineering|technology|department|dept)\b/gi, '').trim();
+        
+        const matched = KB.departments.ug.find(x => x.n.toLowerCase().includes(extractedDept) || x.c === extractedDept) ||
+                        KB.departments.pg.find(x => x.n.toLowerCase().includes(extractedDept) || x.c === extractedDept);
+        if (matched) {
+            return { type: 'exact', id: 'plcmt_' + matched.c, year: extractedYear, suggestions: [] };
+        }
     }
 
     // Context Memory: Implicitly inject department if requested contextually
@@ -2370,8 +2388,14 @@ function classifyIntent(input) {
     }
 
     if (best) {
+        // Auto-map Department + Year directly to Placement stats (e.g., "ETE 2023" -> ETE Placements 2023)
+        if (extractedYear && best.startsWith('dept_')) {
+            best = best.replace('dept_', 'plcmt_');
+            isComposite = true; // Upgrade to exact match confidence
+        }
+
         if (matchedIntents.some(q => q.id === 'greet') && best !== 'greet') {
-            return { type: 'multi', ids: ['greet', best], suggestions: [] };
+            return { type: 'multi', ids: ['greet', best], year: extractedYear, suggestions: [] };
         }
         return { type: isComposite ? 'exact' : 'keyword', id: best, year: extractedYear, suggestions: []  };
     }
@@ -2892,16 +2916,16 @@ function getResponse(id) {
             {l:'Contact Details',a:'contact',i:'📞'}
         ]; break;
     case 'placements_yearly':
-        r.text += T("Here are the year-wise placement statistics for B.E. Computer Science & Engineering (2020-2025): 📊", "Year-wise Placement Statistics (CSE):");
-        if (KB.placement_stats['cs_core'] && KB.placement_stats['cs_core'].full) {
-            KB.placement_stats['cs_core'].full.forEach(prog => {
-                r.text += `\n\n**${prog.name}**`;
-                r.text += `\n• Companies Visited: ${prog.companies} | Offers Made: ${prog.offers}`;
-                r.text += `\n• Students Selected: ${prog.students}`;
-                r.text += `\n• Avg Salary: ${prog.avg} | Max Salary: ${prog.max}`;
-            });
+        if (typeof SESSION !== 'undefined' && SESSION.reqYear) {
+            r.text += T(`You asked for placement statistics for the year **${SESSION.reqYear}**. Which program level would you like to view? 📊`, `Select a program level to view placement statistics for ${SESSION.reqYear}:`);
+        } else {
+            r.text += T("Which program level's year-wise placement statistics would you like to view? 📊", "Select a program level for year-wise placement statistics:");
         }
-        r.buttons = [{l:'Overall 2026 Placements',a:'placements',i:'💼'}, {l:'Other Departments',a:'dept_placements_list',i:'📊'}]; break;
+        r.buttons = [
+            {l:'UG Programs (B.E.) 🎓',a:'plcmt_ug_categories',i:'🎓'},
+            {l:'PG Programs (M.Tech/MCA) 🎓',a:'plcmt_pg_categories',i:'🎓'},
+            {l:'Overall 2026 Placements',a:'placements',i:'💼'}
+        ]; break;
     case 'dept_placements_list':
         r.text += T("Explore our department-wise placement statistics! 📊 Select Program Level:", "Department-wise Placement Statistics - Select Level:");
         r.buttons = [
@@ -3580,22 +3604,71 @@ function getResponse(id) {
             if (d) {
                 if (rawStats) {
                     if (!isUG && !isPG && (rawStats.ug || rawStats.pg)) {
-                        r.text += T(`The **${d.n}** department has both UG and PG programs. Which placement statistics would you like to view? 📊`, 
-                                    `Select the program level for ${d.n} placements:`);
-                        r.buttons = [];
-                        if (rawStats.ug) r.buttons.push({l: 'UG Programs (B.E.) 🎓', a: `plcmt_${c}_ug`, i: '🎓'});
-                        if (rawStats.pg) r.buttons.push({l: 'PG Programs (M.Tech/MCA) 🎓', a: `plcmt_${c}_pg`, i: '🎓'});
-                        r.buttons.push({l: 'Other Departments', a: 'dept_placements_list', i: '📋'});
-                        return r;
+                        // Check if a year is requested
+                        if (typeof SESSION !== 'undefined' && SESSION.reqYear) {
+                            if (rawStats.ug) { isUG = true; }
+                            else if (rawStats.pg) { isPG = true; }
+                        } else {
+                            r.text += T(`The **${d.n}** department has both UG and PG programs. Which placement statistics would you like to view? 📊`, 
+                                        `Select the program level for ${d.n} placements:`);
+                            r.buttons = [];
+                            if (rawStats.ug) r.buttons.push({l: 'UG Programs (B.E.) 🎓', a: `plcmt_${c}_ug`, i: '🎓'});
+                            if (rawStats.pg) r.buttons.push({l: 'PG Programs (M.Tech/MCA) 🎓', a: `plcmt_${c}_pg`, i: '🎓'});
+                            r.buttons.push({l: 'Other Departments', a: 'dept_placements_list', i: '📋'});
+                            return r;
+                        }
                     }
 
                     let stats = rawStats;
                     if (isUG && stats.ug) stats = stats.ug;
                     else if (isPG && stats.pg) stats = stats.pg;
 
-                    r.text += T(`Here are the placement highlights for **${d.n}**: 🚀\n\n`, `Detailed Placement Statistics for ${d.n}:\n\n`);
+                    // Year-specific logic
+                    if (typeof SESSION !== 'undefined' && SESSION.reqYear) {
+                        const requestedYears = SESSION.reqYear.split(' & ');
+                        let foundProgs = [];
+                        let missingYears = [];
+
+                        requestedYears.forEach(yr => {
+                            let specificProg = null;
+                            if (stats.full) specificProg = stats.full.find(p => p.name && p.name.includes(yr));
+                            if (!specificProg && stats.programs) specificProg = stats.programs.find(p => p.name && p.name.includes(yr));
+                            if (!specificProg && stats.ongoing && !Array.isArray(stats.ongoing) && (stats.ongoing.name||'').includes(yr)) specificProg = stats.ongoing;
+                            if (!specificProg && Array.isArray(stats.ongoing)) specificProg = stats.ongoing.find(p => p.name && p.name.includes(yr));
+                            
+                            if (specificProg) {
+                                foundProgs.push({ yr, prog: specificProg });
+                            } else {
+                                missingYears.push(yr);
+                            }
+                        });
+                        
+                        if (foundProgs.length > 0) {
+                            r.text += T(`Here are the placement highlights for **${d.n}** for the year(s) ${SESSION.reqYear}: 🚀\n\n`, `Detailed Placement Statistics for ${d.n} (${SESSION.reqYear}):\n\n`);
+                            foundProgs.forEach(item => {
+                                r.text += `**${item.prog.name}**\n`;
+                                r.text += `• **Number of companies visited:** ${item.prog.companies}\n`;
+                                r.text += `• **Number of offers made:** ${item.prog.offers}\n`;
+                                r.text += `• **Number of students selected:** ${item.prog.students}\n`;
+                                r.text += `• **Average Salary:** ${item.prog.avg}\n`;
+                                r.text += `• **Maximum salary:** ${item.prog.max}\n\n`;
+                            });
+                            
+                            if (missingYears.length > 0) {
+                                r.text += T(`*(Note: We couldn't find specific placement records for the year(s) ${missingYears.join(', ')}.)*\n\n`, `*(Note: We couldn't find specific placement records for the year(s) ${missingYears.join(', ')}.)*\n\n`);
+                            }
+                            
+                            r.buttons = [{l: 'View All Years 📊', a: `plcmt_${c}${isUG?'_ug':(isPG?'_pg':'')}`, i: '📅'}];
+                            return r;
+                        } else {
+                            r.text += T(`No placement record of academic year ${SESSION.reqYear} found for ${d.n}.`, `No placement record of academic year ${SESSION.reqYear} found for ${d.n}.`);
+                            r.buttons = [{l: 'View All Available Years 📊', a: `plcmt_${c}${isUG?'_ug':(isPG?'_pg':'')}`, i: '📅'}, {l: 'Other Departments', a: 'dept_placements_list', i: '📋'}];
+                            return r;
+                        }
+                    } else {
+                        r.text += T(`Here are the placement highlights for **${d.n}**: 🚀\n\n`, `Detailed Placement Statistics for ${d.n}:\n\n`);
+                    }
                     
-                    // Check if they use the new structured format
                     if (stats.ongoing) {
                         const progs = Array.isArray(stats.ongoing) ? stats.ongoing : [stats.ongoing];
                         progs.forEach(prog => {
@@ -3611,9 +3684,7 @@ function getResponse(id) {
                         if (stats.full && stats.full.length > 0) {
                             r.buttons.push({l: 'View Full Year-wise Stats 📊', a: `plcmt_full_${originalId}`, i: '📅'});
                         }
-                    } 
-                    // Fallback to legacy flat programs array
-                    else if (stats.programs) {
+                    } else if (stats.programs) {
                         stats.programs.forEach(prog => {
                             r.text += `**${prog.name}**\n`;
                             r.text += `• **Number of companies visited:** ${prog.companies}\n`;
@@ -3623,12 +3694,15 @@ function getResponse(id) {
                             r.text += `• **Maximum salary:** ${prog.max}\n\n`;
                         });
                         r.buttons = [];
-                    } else {
+                    } else if (stats.companies !== undefined) {
                         r.text += `• **Number of companies visited:** ${stats.companies}\n`;
                         r.text += `• **Number of offers made:** ${stats.offers}\n`;
                         r.text += `• **Number of students selected:** ${stats.students}\n`;
                         r.text += `• **Average Salary:** ${stats.avg}\n`;
                         r.text += `• **Maximum salary:** ${stats.max}\n`;
+                        r.buttons = [];
+                    } else {
+                        r.text += `*Placement statistics are currently being updated for this department.*\n`;
                         r.buttons = [];
                     }
                     
@@ -4062,6 +4136,9 @@ function process(rawText) {
 
     // Classify the intent with confidence detection
     const result = classifyIntent(text);
+    if (result && typeof SESSION !== 'undefined') {
+        SESSION.reqYear = result.year || null;
+    }
 
     // === MULTI-INTENT HANDLING ===
     if (result.type === 'multi') {
