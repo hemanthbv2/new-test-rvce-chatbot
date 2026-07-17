@@ -450,7 +450,7 @@ const KB = {
                 u:"https://rvce.edu.in/department/ai_ml/main_department/",
                 intake: "180",
                 accreditation: "Not specified/New", 
-                hod:"Dr. B. Sathish Babu",
+                hod:"To Be Appointed",
                 info: "Established in 2021, the programme builds a strong foundation in computer science engineering with focused training in Artificial Intelligence, Machine Learning, Deep Learning, and Data Science.",
                 about: "https://rvce.edu.in/department/ai_ml/about_the_department/",
                 syllabus: "https://rvce.edu.in/academics_and_examinations/rvce_scheme_syllabus/#ug",
@@ -460,7 +460,7 @@ const KB = {
                 facilities: "https://rvce.edu.in/department/ai_ml/facilities/",
                 research: "https://rvce.edu.in/department/ai_ml/research/",
                 campus_diaries: "https://rvce.edu.in/department/ai_ml/campus_diaries/",
-                hod_message: "https://rvce.edu.in/department/ai_ml/dr_b_sathish_babu_hod_message/",
+                hod_message: "",
                 academic_planning: "https://rvce.edu.in/department/ai_ml/academic_planning/",
                 collab: "https://rvce.edu.in/department/ai_ml/collaboration-and-networking/"
             },
@@ -1082,7 +1082,6 @@ const KB = {
             { n: "Dr. Ekta Jain", u: "https://rvce.edu.in/department/ae/ekta-jain/", d: "Assistant Professor", e: "Not specified" }
         ],
         aiml: [
-            { n: "Dr. B. Sathish Babu", u: "https://rvce.edu.in/department/ai_ml/dr_b_sathish_babu_bio/", d: "Professor and HoD", e: "Teaching: 30 Years" },
             { n: "Dr. Vijayalakshmi M N", u: "https://rvce.edu.in/department/ai_ml/dr_vijayalakshmi_m_n/", d: "Associate Professor", e: "25 years" },
             { n: "Dr. S. Anupama Kumar", u: "https://rvce.edu.in/department/ai_ml/dr_s_anupama_kumar/", d: "Associate Professor", e: "25 years" },
             { n: "Dr. Narasimha Swamy S", u: "https://rvce.edu.in/department/ai_ml/dr_narasimha_swamy_s/", d: "Assistant Professor", e: "Teaching: 4 years" },
@@ -2565,7 +2564,7 @@ function getDeepInfo(lastId) {
         'departments': () => {
             r.text = T("RVCE has departments across multiple levels! 📚","Department Overview:");
             r.text += "\n\n**UG Programs (B.E.):** " + KB.departments.ug.length + " departments\n**PG Programs (M.Tech/MCA):** " + KB.departments.pg.length + " programs\n**PhD:** Available in all departments with 15 VTU-recognized Research Centres";
-            r.text += "\n\n**Top Departments:**\n• CSE — HOD: Dr. Shanta Rangaswamy\n• AIML — HOD: Dr. Sathish Babu B\n• ECE — HOD: Dr. Ravish Aradhya H V\n• ISE — HOD: Dr. Mamatha G S\n• ME — HOD: Dr. Shanmukha Nagaraj";
+            r.text += "\n\n**Top Departments:**\n• CSE — HOD: Dr. Shanta Rangaswamy\n• AIML — HOD: To Be Appointed\n• ECE — HOD: Dr. Ravish Aradhya H V\n• ISE — HOD: Dr. Mamatha G S\n• ME — HOD: Dr. Shanmukha Nagaraj";
             r.buttons = [{l:'UG Programs',a:'ugPrograms',i:'🎓'},{l:'PG Programs',a:'pgPrograms',i:'📘'},{l:'All HODs',a:'hods_list',i:'👩‍🏫'}];
         },
         'research': () => {
@@ -3114,7 +3113,7 @@ function getResponse(id) {
         r.buttons = [{l:'HODs List 📚',a:'hods_list',i:'👩‍🏫'}, {l:'Key Executives Page',u:'https://rvce.edu.in/about_us/key-executives/',i:'🌐'}]; break;
     case 'hods_list':
         r.text += T("Here are the Heads of Departments (HODs): 📚\n\n","RVCE Head of Departments:\n\n");
-        r.text += "• **CSE:** Dr. Shanta Rangaswamy\n• **AIML:** Dr. Sathish Babu B\n• **ISE:** Dr. Mamatha G S\n• **ECE:** Dr. Ravish Aradhya H V\n• **Mechanical:** Dr. Shanmukha Nagaraj\n• **Civil:** Dr. Anjaneyappa\n• **EEE:** Dr. J N Hemalatha (I/c)\n• **Aerospace:** [Dr. Supreeth R](https://rvce.edu.in/department/ae/dr_r_supreeth/)\n• **Biotech:** Dr. Nagashree N Rao\n• **Chemical:** Dr. Jagadish H Patil\n• **EIE:** Dr. CH. Renumadhavi\n• **ETE:** Dr. Nagamani K\n• **IEM:** Dr. Rajeswara Rao K V S\n• **MCA:** Dr. Jasmine K S\n• **Physics:** Dr. G. Shireesha\n• **Maths:** Dr. Jayalatha G\n• **Chemistry:** Dr. Mahesh R";
+        r.text += "• **CSE:** Dr. Shanta Rangaswamy\n• **AIML:** To Be Appointed\n• **ISE:** Dr. Mamatha G S\n• **ECE:** Dr. Ravish Aradhya H V\n• **Mechanical:** Dr. Shanmukha Nagaraj\n• **Civil:** Dr. Anjaneyappa\n• **EEE:** Dr. J N Hemalatha (I/c)\n• **Aerospace:** [Dr. Supreeth R](https://rvce.edu.in/department/ae/dr_r_supreeth/)\n• **Biotech:** Dr. Nagashree N Rao\n• **Chemical:** Dr. Jagadish H Patil\n• **EIE:** Dr. CH. Renumadhavi\n• **ETE:** Dr. Nagamani K\n• **IEM:** Dr. Rajeswara Rao K V S\n• **MCA:** Dr. Jasmine K S\n• **Physics:** Dr. G. Shireesha\n• **Maths:** Dr. Jayalatha G\n• **Chemistry:** Dr. Mahesh R";
         r.buttons = [{l:'Deans List 🎓',a:'deans_list',i:'👨‍🏫'}, {l:'Key Executives Page',u:'https://rvce.edu.in/about_us/key-executives/',i:'🌐'}]; break;
     case 'dress_code':
         r.text += T("Dress sharp! 👔 No shorts or ripped jeans. Casuals are okay, but labs require safety gear (Khakis/Aprons)!",
